@@ -14,6 +14,7 @@
   <header>
     <?php get_template_part( '_includes/header' ); ?>
   </header>
+  <body>
   <main>
     <?php get_template_part( '_includes/topnav' ); ?>
     <?php get_template_part( '_includes/leftnavmain' ); ?>
@@ -26,19 +27,19 @@
       <h3>Преимущества</h3>
       <div class="advantages">
         <div class="box">
-          <div class="wrap"><img src="<?php $images_folder ?> advant.png" alt="car"></div>
+          <div class="wrap"><img src="<?php echo $images_folder?>advant.png" alt="car"></div>
           <div class="description">Обновляемый парк техники</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="wp-content/uploads/img/advant2.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder?>advant2.png" alt=""></div>
           <div class="description">Опытные водители</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="wp-content/uploads/img/advant3.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder?>advant3.png" alt=""></div>
           <div class="description">Прием заказов круглые сутки</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="wp-content/uploads/img/advant4.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder?>advant4.png" alt=""></div>
           <div class="description">Любой вид расчета (наличный, безналичный)</div>
         </div>
       </div>
@@ -70,6 +71,7 @@
 
     </section>
   </main>
+  </body>
   <footer>
     <?php get_template_part( '_includes/footer' ); ?>
   </footer>

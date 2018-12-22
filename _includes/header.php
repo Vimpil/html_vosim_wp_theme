@@ -1,5 +1,8 @@
+<?php
+global $images_folder;
+?>
 <div class="logo_smm">
-  <div class="logo"><img src="assets/css/img/logo.png" alt="logo"></div>
+  <div class="logo"><img src="<?php echo $images_folder?>logo.png" alt="logo"></div>
   <div class="smm">
     <a href="" class="vk"><i class="fab fa-vk"></i></a>
     <a href="" class="facebook"><i class="fab fa-facebook-f"></i></a>

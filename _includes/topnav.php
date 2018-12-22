@@ -1,3 +1,6 @@
+<?php 
+global $images_folder
+ ?>
 <div class="topnav">
   <div class="active services">
     <button class="dropbtn" onclick="topnav_dropbtn()">Услуги и продукция
@@ -6,7 +9,7 @@
     <div class="dropdown-content" id="myMainDropdown">
       <div class="list-with-heading">
         <div class="title">Аренда спецтехники</div>
-        <a href=""><img src="assets/css/img/kran-manipulator.jpg" alt=""><span>Краны-манипуляторы</span></a>
+        <a href=""><img src="<?php echo $images_folder?>kran-manipulator.jpg" alt=""><span>Краны-манипуляторы</span></a>
       </div>
       <div class="list-with-heading">
         <div class="title">Продажа материалов</div>

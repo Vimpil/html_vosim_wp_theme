@@ -1,10 +1,13 @@
+<?php 
+global $images_folder
+ ?>
 <aside class="left_nav">
   <div class="list-with-heading">
     <a href=""><span>Краны-манипуляторы</span></a>
     <a class="active" href=""><span>Эскаваторы-погрузчики</span></a>
   </div>
   <div class="promote">
-    <img class="rent_discount" src="assets/img/discounts_rent.jpg" alt="Discount">
+    <img class="rent_discount" src="<?php echo $images_folder?>discounts_rent.jpg" alt="Discount">
   </div>
   <div class="news">
     <div class="news_head">

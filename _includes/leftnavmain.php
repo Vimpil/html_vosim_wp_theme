@@ -1,14 +1,17 @@
+<?php 
+global $images_folder
+ ?>
 <aside class="left_nav">
   <div class="question_answer">
     <button class="accordion">Аренда спецтехники</button>
     <div class="panel">
-      <a href=""><img src="assets/css/img/kran-manipulator.jpg" alt=""><span>Краны-манипуляторы</span></a>
+      <a href=""><img src="<?php echo $images_folder?>kran-manipulator.jpg" alt=""><span>Краны-манипуляторы</span></a>
     </div>
   </div>
   <div class="question_answer">
     <button class="accordion">Продажа материало</button>
     <div class="panel">
-      <a href=""><img src="assets/css/img/kran-manipulator.jpg" alt=""><span>Краны-манипуляторы</span></a>
+      <a href=""><img src="<?php echo $images_folder?>kran-manipulator.jpg" alt=""><span>Краны-манипуляторы</span></a>
     </div>
   </div>
   <div class="question_answer">
@@ -18,7 +21,7 @@
     </div>
   </div>
   <div class="promote">
-    <img class="rent_discount" src="assets/css/img/discounts_rent.jpg" alt="Discount">
+    <img class="rent_discount" src="<?php echo $images_folder?>discounts_rent.jpg" alt="Discount">
   </div>
   <div class="news">
     <div class="news_head">
