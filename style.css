@@ -752,7 +752,7 @@ input#name, input#ph_or_email {
   margin-top: 10px;
   width: 14px;
   height: 20px;
-  background: url(img/user.png);
+  background: url(assets/img/user.png);
   background-repeat: no-repeat;
   position: absolute;
   top: 0px;
@@ -763,7 +763,7 @@ input#name, input#ph_or_email {
   margin-top: 5px;
   width: 20px;
   height: 16px;
-  background: url(img/email_call.png);
+  background: url(assets/img/email_call.png);
   background-repeat: no-repeat;
   position: absolute;
   top: 7px;
@@ -989,7 +989,7 @@ select#time {
   top: 0;
   left: 111px;
   content: "";
-  background-image: url(img/clip.png);
+  background-image: url(assets/img/clip.png);
   width: 24px;
   height: 22px;
 }
@@ -1050,7 +1050,7 @@ select#time {
   top: 0;
   width: 13px;
   height: 10px;
-  background-image: url("img/checker.png");
+  background-image: url("assets/img/checker.png");
 }
 @media screen and (max-width: 931px) {
   .gallery {
@@ -1571,7 +1571,7 @@ button.slick-prev.pull-left.slick-arrow {
   height: 20px;
   width: 20px;
   padding: 10px;
-  background: url('img/arrow-left.png') no-repeat;
+  background: url('assets/img/arrow-left.png') no-repeat;
   background-position: center;
   background-size: 9px 12px;
   position: absolute;
@@ -1586,7 +1586,7 @@ button.slick-next.pull-right.slick-arrow {
   height: 20px;
   width: 20px;
   padding: 10px;
-  background: url('img/arrow-right.png') no-repeat;
+  background: url('assets/img/arrow-right.png') no-repeat;
   background-position: center;
   background-size: 9px 12px;
   position: absolute;
@@ -1664,6 +1664,7 @@ button.slick-next.pull-right.slick-arrow {
   display: table-cell;
   vertical-align: middle;
   height: 75px;
+  text-align:left;
 }
 .advantages .box .wrap:before {
   content: "";
@@ -1695,7 +1696,7 @@ button.slick-next.pull-right.slick-arrow {
   }
 }
 .back {
-  background-image: url("img/back_call.jpg");
+  background-image: url("assets/img/back_call.jpg");
   background-position: right;
   background-repeat: no-repeat;
   background-position-x: 80px;

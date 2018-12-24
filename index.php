@@ -3,18 +3,10 @@
   Template Name: Html_vosim
 */
  ?>
-<!DOCTYPE html>
-<html lang="en">
-<div id="page" class="main_page">
-  <div class="mh-head Sticky header" id="my-header">
-    <a href="#menu"><span></span></a>
-    Строй Союз
-  </div>
-  <?php get_template_part( '_includes/head' ); ?>
-  <header>
-    <?php get_template_part( '_includes/header' ); ?>
-  </header>
-  <body>
+<?php
+get_header();
+?>
+<body>
   <main>
     <?php get_template_part( '_includes/topnav' ); ?>
     <?php get_template_part( '_includes/leftnavmain' ); ?>
@@ -23,7 +15,6 @@
       <?php get_template_part( '_includes/slider' ); ?>
       <h3>Наша спецтехника</h3>
       <?php get_template_part( '_includes/gallerymain' ); ?>
-
       <h3>Преимущества</h3>
       <div class="advantages">
         <div class="box">
