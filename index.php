@@ -1,36 +1,50 @@
 <?php
 /*
-  Template Name: Html_vosim
-*/
- ?>
+Template Name: Html_vosim
+ */
+?>
 <?php
 get_header();
 ?>
 <body>
   <main>
-    <?php get_template_part( '_includes/topnav' ); ?>
-    <?php get_template_part( '_includes/leftnavmain' ); ?>
+    <?php
+global $images_folder
+?>
+
+
+<h2>Test MEnu</h2>
+
+
+<?php 
+	wp_nav_menu( );
+	?>
+
+
+<?php get_template_part('template-parts/navigation/topnav');?>
+ <?php get_template_part('template-parts/navigation/leftnav');?>
+
     <section class="main">
       <!-- {%- include sitemap.html -%} -->
-      <?php get_template_part( '_includes/slider' ); ?>
+      <?php get_template_part('_includes/slider');?>
       <h3>Наша спецтехника</h3>
-      <?php get_template_part( '_includes/gallerymain' ); ?>
+      <?php get_template_part('_includes/gallerymain');?>
       <h3>Преимущества</h3>
       <div class="advantages">
         <div class="box">
-          <div class="wrap"><img src="<?php echo $images_folder?>advant.png" alt="car"></div>
-          <div class="description">Обновляемый парк техники</div>
+          <div class="wrap"><img src="<?php echo $images_folder ?>advant.png" alt="car"></div>
+          <div class="discounts_rentescription">Обновляемый парк техники</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="<?php echo $images_folder?>advant2.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder ?>advant2.png" alt=""></div>
           <div class="description">Опытные водители</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="<?php echo $images_folder?>advant3.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder ?>advant3.png" alt=""></div>
           <div class="description">Прием заказов круглые сутки</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="<?php echo $images_folder?>advant4.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder ?>advant4.png" alt=""></div>
           <div class="description">Любой вид расчета (наличный, безналичный)</div>
         </div>
       </div>
@@ -59,17 +73,16 @@ get_header();
           </div>
         </div>
       </div>
-
     </section>
-  </main>
-  </body>
+ </main>
+</body>
   <footer>
-    <?php get_template_part( '_includes/footer' ); ?>
+    <?php get_template_part('_includes/footer');?>
   </footer>
-  <?php get_template_part( '_includes/mobile_menu' ); ?>
-  <?php get_template_part( '_includes/right_nav' ); ?>
-  <?php get_template_part( '_includes/scripts' ); ?>
-  <?php get_template_part( '_includes/sliderscript' ); ?>
+  <?php get_template_part('_includes/mobile_menu');?>
+  <?php get_template_part('_includes/right_nav');?>
+  <?php get_template_part('_includes/scripts');?>
+  <?php get_template_part('_includes/sliderscript');?>
 </div>
 
 </html>
