@@ -2,24 +2,51 @@
 /*
 Template Name: Html_vosim
  */
-?>
-<?php
 get_header();
+?>
+
+<?php
+include 'template-parts/php_logger/ChromePhp.php';
 ?>
 <body>
   <main>
     <?php
-global $images_folder
+global $images_folder;
+if (shortcode_exists('button')) {
+	// The [gallery] short code exists.
+	ChromePhp::log("button shortcode exists");
+}
 ?>
 
 
 <h2>Test MEnu</h2>
 
+<?php
+echo '[button]';
+echo do_shortcode('[button]');
 
-<?php 
-	wp_nav_menu( );
-	?>
+?>
 
+<?php
+wp_nav_menu([
+	'theme_location' => 'header-menu',
+]);
+echo "content";
+$post_575 = get_post(1)->post_content;
+echo apply_filters('the_content', $post_575);
+
+?>
+
+
+<?php
+global $image_list;
+$found_post = get_post_by_name("main_slider");
+$galleries = pw_show_gallery_image_urls($found_post);
+/*debug_to_console(gettype($galleries));*/
+echo apply_filters('the_content', $image_list);
+/*array_to_html($galleries);*/
+ChromePhp::log("galleries");
+?>
 
 <?php get_template_part('template-parts/navigation/topnav');?>
  <?php get_template_part('template-parts/navigation/leftnav');?>
@@ -33,7 +60,7 @@ global $images_folder
       <div class="advantages">
         <div class="box">
           <div class="wrap"><img src="<?php echo $images_folder ?>advant.png" alt="car"></div>
-          <div class="discounts_rentescription">Обновляемый парк техники</div>
+          <div class="description">Обновляемый парк техники</div>
         </div>
         <div class="box">
           <div class="wrap"><img src="<?php echo $images_folder ?>advant2.png" alt=""></div>
