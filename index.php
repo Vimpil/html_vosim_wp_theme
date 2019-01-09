@@ -4,7 +4,6 @@ Template Name: Html_vosim
  */
 get_header();
 ?>
-
 <?php
 include 'template-parts/php_logger/ChromePhp.php';
 ?>
@@ -17,28 +16,20 @@ if (shortcode_exists('button')) {
 	ChromePhp::log("button shortcode exists");
 }
 ?>
-
-
-<h2>Test MEnu</h2>
-
-<?php
+    <h2>Test MEnu</h2>
+    <?php
 echo '[button]';
 echo do_shortcode('[button]');
-
 ?>
-
-<?php
+    <?php
 wp_nav_menu([
 	'theme_location' => 'header-menu',
 ]);
 echo "content";
-$post_575 = get_post(1)->post_content;
+$post_575 = get_post(22)->post_content;
 echo apply_filters('the_content', $post_575);
-
 ?>
-
-
-<?php
+    <?php
 global $image_list;
 $found_post = get_post_by_name("main_slider");
 $galleries = pw_show_gallery_image_urls($found_post);
@@ -47,10 +38,8 @@ echo apply_filters('the_content', $image_list);
 /*array_to_html($galleries);*/
 ChromePhp::log("galleries");
 ?>
-
-<?php get_template_part('template-parts/navigation/topnav');?>
- <?php get_template_part('template-parts/navigation/leftnav');?>
-
+    <?php get_template_part('template-parts/navigation/topnav');?>
+    <?php get_template_part('template-parts/navigation/leftnav');?>
     <section class="main">
       <!-- {%- include sitemap.html -%} -->
       <?php get_template_part('_includes/slider');?>
@@ -78,9 +67,9 @@ ChromePhp::log("galleries");
       <h4>Аренда спецтехники от компании «СтройСоюз»</h4>
       <p>Покупка техники для выполнения строительных и ремонтных работ часто невозможна из-за высокой стоимости. Лучшим решением в этом случае является аренда спецтехники на выгодных условиях, например, в компании «СтройСоюз».</p>
       <p>Сегодня на рынке можно взять в аренду любую технику — от катка до буровой установки. Аренда техники — это выгодная сделка, которая применима в разных сферах: в сельском хозяйстве, в промышленности, при строительстве дорог, уборке мусора,
-        перевозке сыпучих материалов. Хорошие машины имеют высокую стоимость, и хранить их в гараже предприятия ради единичной работы невыгодно. Поэтому для выполнения определенного заказа выгоднее заключить договор аренды спецтехники.</p>
+      перевозке сыпучих материалов. Хорошие машины имеют высокую стоимость, и хранить их в гараже предприятия ради единичной работы невыгодно. Поэтому для выполнения определенного заказа выгоднее заключить договор аренды спецтехники.</p>
       <p>Наша компания имеет современную техническую базу. Все машины находятся в хорошем состоянии и своевременно проходят осмотры и ремонты. Автомобильный парк постоянно пополняется новыми моделями для удовлетворения потребностей клиента.
-        Сотрудники, имеющие большой опыт работы, готовы предоставить консультации и полный комплекс услуг по подбору и аренде спецтехники.</p>
+      Сотрудники, имеющие большой опыт работы, готовы предоставить консультации и полный комплекс услуг по подбору и аренде спецтехники.</p>
       <p>Компания работает на территории Новгородской области и Великого Новгорода. Также специалисты готовы выехать на объекты, находящиеся за пределами области.</p>
       <h3>Мы свяжемся с вами!</h3>
       <div class="call_back">
@@ -101,15 +90,8 @@ ChromePhp::log("galleries");
         </div>
       </div>
     </section>
- </main>
+  </main>
 </body>
-  <footer>
-    <?php get_template_part('_includes/footer');?>
-  </footer>
-  <?php get_template_part('_includes/mobile_menu');?>
-  <?php get_template_part('_includes/right_nav');?>
-  <?php get_template_part('_includes/scripts');?>
-  <?php get_template_part('_includes/sliderscript');?>
+<?php get_footer();?>
 </div>
-
 </html>
