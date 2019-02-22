@@ -156,11 +156,24 @@ window.onclick = function(e) {
 }
 jQuery(document).ready(function($) {
 
+
+
    /*Left_nav main*/
-   $(".main_page button.accordion").click(function(event) {
+   $(".left_nav .menu-item-has-children>a").click(function(event) {
+      event.preventDefault();
       $(this).parent().toggleClass('clicked');
       console.log($(this).parent());
    });
+
+   // $(".accordion").click(function(event) {
+
+    $(".left_nav .menu-main-container ul>li a").click(function(event) {
+      /* Act on the event */
+      $(this).parent().children('ul').slideToggle();
+   });
+
+
+
    /*END Left_nav main*/
 
    $('.call_back_form').magnificPopup({
@@ -208,10 +221,8 @@ jQuery(document).ready(function($) {
       document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
    });
 
-   $(".accordion").click(function(event) {
-      /* Act on the event */
-      $(this).parent().children('.panel').slideToggle();
-   });
+
+
    $('.gallery-item').magnificPopup({
       type: 'image',
       gallery: {

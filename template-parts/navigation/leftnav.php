@@ -7,35 +7,15 @@
        <?php
       wp_nav_menu(array());
       ?>
-
-      <div class="question_answer">
-        <button class="accordion">Аренда спецтехники</button>
-        <div class="panel">
-          <a href=""><img src="<?php echo $images_folder?>kran-manipulator.jpg" alt=""><span>Краны-манипуляторы</span></a>
-        </div>
-      </div>
-
-      <div class="question_answer">
-        <button class="accordion">Продажа материало</button>
-        <div class="panel">
-          <a href=""><img src="<?php echo $images_folder?>kran-manipulator.jpg" alt=""><span>Краны-манипуляторы</span></a>
-        </div>
-      </div>
-
-      <div class="question_answer">
-        <button class="accordion">Другие услуги</button>
-        <div class="panel">
-        </div>
-      </div>
-
       <div class="promote">
-        <img class="rent_discount" src="<?php echo $images_folder?>discounts_rent.jpg" alt="Discount">
+        <?php 
+        echo get_post_field('post_content', 1347);
+         ?>
       </div>
-
-      <div class="news">
+  <div class="news">
         <div class="news_head">
           <div class="news_title">Новости</div>
-          <a class="archieve" href="">Архив</a>
+          <a class="archieve" href="page-news.html">Архив</a>
         </div>
         <div class="news_list">
           <div class="n_block">
