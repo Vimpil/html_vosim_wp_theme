@@ -10,11 +10,12 @@ include 'template-parts/php_logger/ChromePhp.php';
 <body>
   <main>
     <?php
-    global $images_folder;
-    if (shortcode_exists('button')) {
-    	// The [gallery] short code exists.
-    }
-    ?>
+global $images_folder;
+if (shortcode_exists('button')) {
+	// The [gallery] short code exists.
+	ChromePhp::log("button shortcode exists");
+}
+?>
 
 <?php
 
@@ -24,11 +25,14 @@ echo '<p>content!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>';
 
 ?>
 
-    
-  
+
+
 <?php
+
 global $image_list;
 global $found_post;
+global $temp_path;
+
 $found_post = get_post_by_name("main_slider");
 $galleries = pw_show_gallery_image_urls($found_post);
 /*debug_to_console(gettype($galleries));*/
@@ -46,19 +50,19 @@ ChromePhp::log("galleries");
       <h3>Преимущества</h3>
       <div class="advantages">
         <div class="box">
-          <div class="wrap"><img src="<?php echo $images_folder ?>advant.png" alt="car"></div>
+          <div class="wrap"><img src="<?php echo $images_folder; ?>advant.png" alt="car"></div>
           <div class="description">Обновляемый парк техники</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="<?php echo $images_folder ?>advant2.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder; ?>advant2.png" alt=""></div>
           <div class="description">Опытные водители</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="<?php echo $images_folder ?>advant3.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder; ?>advant3.png" alt=""></div>
           <div class="description">Прием заказов круглые сутки</div>
         </div>
         <div class="box">
-          <div class="wrap"><img src="<?php echo $images_folder ?>advant4.png" alt=""></div>
+          <div class="wrap"><img src="<?php echo $images_folder; ?>advant4.png" alt=""></div>
           <div class="description">Любой вид расчета (наличный, безналичный)</div>
         </div>
       </div>

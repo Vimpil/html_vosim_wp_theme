@@ -1,7 +1,5 @@
 <?php
 
-
-
 /* disable gutenberg */
 
 // disable for posts
@@ -181,6 +179,5 @@ function get_post_by_name($post_name) {
 	}
 	return $found_post;
 
-}
-
-// END Get Post by name
+}; // END Get Post by name
+?>

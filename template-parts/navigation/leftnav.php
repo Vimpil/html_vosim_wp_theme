@@ -1,6 +1,7 @@
 
  <?php 
-  global $images_folder
+  global $images_folder;
+  global $temp_path;
  ?>
  <aside class="left_nav">
 
@@ -15,7 +16,7 @@
   <div class="news">
         <div class="news_head">
           <div class="news_title">Новости</div>
-          <a class="archieve" href="page-news.html">Архив</a>
+          <a class="archieve" href="/index.php/all_news/">Архив</a>
         </div>
         <div class="news_list">
           <div class="n_block">
