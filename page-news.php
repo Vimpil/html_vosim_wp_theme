@@ -1,6 +1,6 @@
 <?php
 /*
- * Template Name: Html_vosim page-news
+ * Template Name: page-news
  * Template Post Type: page
  */
 ;?>
@@ -31,11 +31,13 @@ query_posts(array('category_name' => 'news', 'order' => 'ASC'));
 while (have_posts()):
 	the_post();
 
-	?><h5><?php
-	the_title();?></h5
-						<p><?php the_date();?></p>
-						<?php
-	echo $content = wpautop($post->post_content);
+	?>
+
+	<h5><?php	the_title();?></h5>
+	<p><?php the_date();?></p>
+	
+	<?php echo $content = wpautop($post->post_content);
+	
 	// echo get_the_content();
 endwhile;
 
@@ -43,9 +45,12 @@ endwhile;
 wp_reset_query();
 
 ?>
+
 </section>
   </main>
 </body>
+
 <?php get_footer();?>
+
 </div>
 </html>

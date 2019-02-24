@@ -12,7 +12,7 @@
  * @since 1.0
  * @version 1.0
  */
-?>
+;?>
 <?php ob_start();?>
 <!DOCTYPE html>
 <html <?php
@@ -73,9 +73,9 @@ echo $temp_path;
 </head>
 <header>
 <div class="logo_smm">
-  <div class="logo"><img src="<?php
+  <div class="logo"><a href='<?php echo home_url(); ?>'><img src="<?php
 echo $images_folder
-?>logo.png" alt="logo"></div>
+; ?>logo.png" alt="logo"></a></div>
   <div class="smm">
     <a href="" class="vk"><i class="fab fa-vk"></i></a>
     <a href="" class="facebook"><i class="fab fa-facebook-f"></i></a>

@@ -2195,13 +2195,19 @@ sup {
   font-size: 11px;
   color: black;
 }
-
-
-
-.left_nav .menu-main-container ul>li a{
-  
+.left_nav .news_list a{
+  font-size: 15px;
 }
-
+.left_nav .news_list p{
+  text-align:left;
+  font-size: 14px;
+}
+.left_nav .news a.archieve{
+  font-size: 15px;
+}
+.left_nav .news span.date{
+  font-size: 14px;
+}
 .left_nav .menu-main-container ul ul li a:before {
   content: none;
 }

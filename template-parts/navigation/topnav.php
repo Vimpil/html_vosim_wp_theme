@@ -28,7 +28,7 @@ global $images_folder
 
     </div>
   </div>
-  <a href="#news" class="menu-title">Новости</a>
+  <a href="/index.php/all_news/" class="menu-title">Новости</a>
   <a href="#contact" class="menu-title">Контакты</a>
   <a href="#about" class="menu-title">Карта сайта</a>
   <div class="search-container">
