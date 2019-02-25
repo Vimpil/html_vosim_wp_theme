@@ -1733,7 +1733,7 @@ button#write_to_us {
 }
 
 button.slick-prev.pull-left.slick-arrow.slick-disabled, button.slick-next.pull-right.slick-arrow.slick-disabled {
-  opacity: 0.4;
+  background-color:rgba(109, 109, 109, 0.6);
 }
 
 .wide_img {
@@ -1765,6 +1765,7 @@ button.slick-prev.pull-left.slick-arrow {
   right: 5.9%;
   z-index: 100;
   outline: none;
+  background-color: gray;
 }
 
 button.slick-next.pull-right.slick-arrow {
@@ -1780,6 +1781,7 @@ button.slick-next.pull-right.slick-arrow {
   bottom: 7.5%;
   right: 2.7%;
   outline: none;
+  background-color: gray;
 }
 
 .description {

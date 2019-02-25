@@ -34,7 +34,6 @@ global $found_post;
 global $temp_path;
 
 $found_post = get_post_by_name("main_slider");
-$galleries = pw_show_gallery_image_urls($found_post);
 /*debug_to_console(gettype($galleries));*/
 echo apply_filters('the_content', $image_list);
 /*array_to_html($galleries);*/
@@ -44,9 +43,9 @@ ChromePhp::log("galleries");
     <?php get_template_part('template-parts/navigation/leftnav');?>
     <section class="main">
       <!-- {%- include sitemap.html -%} -->
-      <?php get_template_part('_includes/slider');?>
+      <?php get_template_part('template-parts/sliders/slider');?>
       <h3>Наша спецтехника</h3>
-      <?php get_template_part('_includes/gallerymain');?>
+      <?php get_template_part('template-parts/sliders/gallerymain');?>
       <h3>Преимущества</h3>
       <div class="advantages">
         <div class="box">

@@ -102,59 +102,6 @@ function debug_to_console($data) {
 
 // END DEBUG script
 
-// Get Images from gallery
-
-function pw_show_gallery_image_urls($content) {
-	global $post;
-	global $image_list;
-
-	// Only do this on singular items
-	/*if (!is_singular()) {
-		return $content;
-	}*/
-
-	// Make sure the post has a gallery in it
-	/*if (!has_shortcode($post->post_content, 'gallery')) {
-		debug_to_console("it doesnt have");
-		return $content;
-	}*/
-
-	// Retrieve all galleries of this post
-	$galleries = get_post_galleries_images($post->post_content);
-
-	$image_list = '<ul>';
-
-	// Loop through all galleries found
-
-	// debug_to_console("insider");
-
-	foreach ($galleries as $gallery) {
-		// debug_to_console("gallery");
-		foreach ($gallery as $image) {
-		}
-	}
-
-	foreach ($galleries as $gallery) {
-
-		// Loop through each image in each gallery
-		foreach ($gallery as $image) {
-			$image_list .= '<li>' . $image . '</li>';
-
-		}
-
-	}
-
-	$image_list .= '</ul>';
-
-	// Append our image list to the content of our post
-	//$content .= $image_list;
-
-	//return $content;
-	return $image_list;
-
-}
-add_filter('the_content', 'pw_show_gallery_image_urls');
-// END Get Images from gallery
 
 // Insert content in HTML
 

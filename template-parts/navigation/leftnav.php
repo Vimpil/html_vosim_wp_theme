@@ -27,7 +27,7 @@ echo get_post_field('post_content', 1347);
 
 // The Query
 global $post;
-query_posts(array('category_name' => 'news', 'order' => 'ASC'));
+query_posts(array('category_name' => 'news', 'order' => 'ASC', 'posts_per_page'         => '2',));
 // The Loop
 while (have_posts()):
 	the_post();
