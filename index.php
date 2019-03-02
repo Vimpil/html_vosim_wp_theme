@@ -1,7 +1,7 @@
 <?php
 /*
 Template Name: Html_vosim
- */
+*/
 get_header();
 ?>
 <?php
@@ -10,35 +10,26 @@ include 'template-parts/php_logger/ChromePhp.php';
 <body>
   <main>
     <?php
-global $images_folder;
-if (shortcode_exists('button')) {
-	// The [gallery] short code exists.
-	ChromePhp::log("button shortcode exists");
-}
-?>
-
-<?php
-
-echo '<p>222222222223333333333333344444444444444</p>';
-echo $get_content = do_shortcode(get_post_by_name('main_slider')->post_content);
-echo '<p>content!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>';
-
-?>
-
-
-
-<?php
-
-global $image_list;
-global $found_post;
-global $temp_path;
-
-$found_post = get_post_by_name("main_slider");
-/*debug_to_console(gettype($galleries));*/
-echo apply_filters('the_content', $image_list);
-/*array_to_html($galleries);*/
-ChromePhp::log("galleries");
-?>
+    global $images_folder;
+    if (shortcode_exists('button')) {
+    // The [gallery] short code exists.
+    }
+    ?>
+    <?php
+    echo '<p>222222222223333333333333344444444444444</p>';
+    echo $get_content = do_shortcode(get_post_by_name('main_slider')->post_content);
+    echo '<p>content!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>';
+    ?>
+    <?php
+    global $image_list;
+    global $found_post;
+    global $temp_path;
+    
+    $found_post = get_post_by_name("main_slider");
+    /*debug_to_console(gettype($galleries));*/
+    echo apply_filters('the_content', $image_list);
+    /*array_to_html($galleries);*/
+    ?>
     <?php get_template_part('template-parts/navigation/topnav');?>
     <?php get_template_part('template-parts/navigation/leftnav');?>
     <section class="main">
@@ -90,6 +81,8 @@ ChromePhp::log("galleries");
           </div>
         </div>
       </div>
+
+      <?php  wpforms_display("1448","false","false");?>
     </section>
   </main>
 </body>

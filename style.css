@@ -492,6 +492,12 @@ section.main {
   margin-bottom: 25px;
 }
 
+@media screen and (max-width:980px) {
+  .promote img{
+    width: auto;
+  }
+}
+
 @media screen and (min-width:768px) and (max-width:980px) {
   .promote {
     width: 40%;
@@ -1621,6 +1627,11 @@ button#write_to_us {
   border: 1px solid #ccc;
 }
 
+.right_nav {
+    z-index: 999;
+    position: absolute;
+}
+
 .right_nav button:hover {
   background-color: #f8a505 !important;
   background-image: none !important;
@@ -1734,6 +1745,7 @@ button#write_to_us {
 
 button.slick-prev.pull-left.slick-arrow.slick-disabled, button.slick-next.pull-right.slick-arrow.slick-disabled {
   background-color:rgba(109, 109, 109, 0.6);
+  pointer-events: none;
 }
 
 .wide_img {
@@ -1800,8 +1812,36 @@ button.slick-next.pull-right.slick-arrow {
   margin-bottom: 15px;
 }
 
+.gal_box span.menu-image-title {
+    display: block;
+        color: #2678fe;
+    text-decoration: underline;
+    font-size: 15px;
+}
+.gal_box ul#menu-technic-rent{
+    list-style-type: none;
+    padding-left: 0px;
+    display: flex;
+    justify-content: space-between;
+}
+@media screen and (max-width: 931px) {
+.gal_box span.menu-image-title{
+  text-align: center;
+}
+}
+@media screen and (max-width: 931px) {
+  .gal_box ul#menu-technic-rent{
+    display:block;    
+  }
+}
+
 .gal_box a {
   display: block;
+  width: 130px;
+}
+
+.menu-technic-rent-container {
+    width: 100%;
 }
 
 .box {
@@ -1979,7 +2019,13 @@ button.slick-next.pull-right.slick-arrow {
 }
 
 
-
+@media screen and (max-width: 980px){
+ .left_nav .menu-main-container ul {
+    text-align: left;
+    width: 270px;
+    display: inline-block;
+  }
+}
 
 .gal_box .description {
   line-height: 17px;
@@ -2100,8 +2146,7 @@ sup {
 }
 
 .topnav .dropdown-content ul>li {
-  display: inline-block;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   padding-left: 30px;
 }
 
@@ -2111,9 +2156,6 @@ sup {
   padding: 0;
 }
 
-.topnav .dropdown-content  ul ul li:first-child {
-  display: inline-block;
-}
 
 .topnav .dropdown-content ul {
   display: flex;
@@ -2121,6 +2163,14 @@ sup {
   list-style-type: none;
   margin: 0;
   padding-left: 0;
+}
+
+.topnav .dropdown-content ul ul{
+  display:block;
+}
+
+.topnav .dropdown-content .menu-item a img {
+  margin-left: -46px;
 }
 
 .topnav .dropdown-content  ul ul li:before {
@@ -2138,14 +2188,27 @@ sup {
 }
 
 .topnav .dropdown-content li ul > li a {
-  padding: 0;
-  display: inline-block;
+  padding: 0;  
   margin: 10px 0;
   text-decoration: none;
   color: grey;
   font-family: initial;
   font-size: initial;
   font-weight: initial;
+  margin-bottom: 10px;
+  color: #4789fc;
+  width: 100%;
+  position: relative;
+}
+
+.topnav .dropdown-content li ul > li a:after{
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 20px;
+    text-decoration: underline;
+    border-bottom: 1px solid #4789fc;
 }
 
 /* END generated top-nav menu */
@@ -2207,6 +2270,14 @@ sup {
 .left_nav .news a.archieve{
   font-size: 15px;
 }
+@media screen and (max-width: 980px){
+.left_nav .news_list p {
+      text-align: center;
+    display: inline-block;
+    max-width: 430px;
+}
+}
+
 .left_nav .news span.date{
   font-size: 14px;
 }
@@ -2251,3 +2322,104 @@ sup {
 }
 
 /* END Generated top-nav menu */
+
+
+/* WPforms */
+
+div#wpforms-1448 button[type=submit] {
+  text-align: center;
+  border-radius: 2px;
+  width: 100%;
+  height: 37px;
+  z-index: 310;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  outline: none;
+  margin: 12px 0;
+  margin-left: 62px;
+  max-width: 245px;
+  padding: 0;
+  border: #d48c01 solid 1px;
+  background-image: linear-gradient(#ffac0d, #f6a201);
+}
+
+div#wpforms-1448 .wpforms-submit-container {
+    text-align: initial;
+}
+
+div#wpforms-1448{
+    background-image: url(assets/img/back_call.jpg);
+    background-position: right;
+    background-repeat: no-repeat;
+    background-position-x: 80px;
+    height: 310px;
+    background-color: white;
+    width: 675px;
+    margin: 0 auto;
+    margin-bottom: 60px;
+}
+
+@media screen and (max-width: 425px){
+div#wpforms-1448 {
+    overflow: overlay;
+    width:100%;
+  }
+}
+
+div#wpforms-1448 .wpforms-field-container{
+  padding-top:20px;
+}
+
+input#wpforms-1448-field_1, input#wpforms-1448-field_2, textarea#wpforms-1448-field_3{
+    padding-left: 10px;
+    border: #c3c3c3 solid 1px;
+    margin-left: 12px;
+    border-radius: 3px;
+    line-height: 34px;
+    box-shadow: 0 1px 1px 0 rgba(1, 0, 1, 0) inset;
+    position: relative;
+    width: 90%;
+    color: #757575;
+    font-family: "Tahoma";
+    font-size: 15px;
+    margin-left: 62px;
+    width: 245px;
+}
+
+textarea#wpforms-1448-field_3{
+  height: 70px;
+  resize: none;
+}
+
+div#wpforms-1448-field_1-container,div#wpforms-1448-field_2-container{
+  position: relative;
+}
+
+div#wpforms-1448-field_1-container:before {
+    content: "";
+    margin-top: 10px;
+    width: 14px;
+    height: 20px;
+    background: url(assets/img/user.png);
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 10px;
+    left: 38px;
+}
+
+div#wpforms-1448-field_2-container:before {
+  content: "";
+  margin-top: 5px;
+  width: 20px;
+  height: 16px;
+  background: url(assets/img/email_call.png);
+  background-repeat: no-repeat;
+  position: absolute;
+  top: 18px;
+  left: 34px;
+  background-size: 18px 14px;
+}
+
+/* END WPforms */

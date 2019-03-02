@@ -28,7 +28,7 @@
 </div>
 <?php wp_footer();?>
 </footer>
-<?php get_template_part('_includes/mobile_menu');?>
-  <?php get_template_part('_includes/right_nav');?>
-  <?php get_template_part('_includes/scripts');?>
-  <?php get_template_part('_includes/sliderscript');?>
+<?php get_template_part('template-parts/navigation/mobile_menu');?>
+  <?php get_template_part('template-parts/navigation/right_nav');?>
+  <?php get_template_part('template-parts/scripts/scripts');?>
+  <?php get_template_part('template-parts/scripts/sliderscript');?>
