@@ -2335,7 +2335,8 @@ div#wpforms-1448 button[type=submit] {
   color: white;
   font-size: 16px;
   font-weight: bold;
-  cursor: pointer;
+  cursor: not-allowed;
+  pointer-events: none;
   outline: none;
   margin: 12px 0;
   margin-left: 62px;
@@ -2343,6 +2344,10 @@ div#wpforms-1448 button[type=submit] {
   padding: 0;
   border: #d48c01 solid 1px;
   background-image: linear-gradient(#ffac0d, #f6a201);
+  opacity: 0.65;
+}
+div#wpforms-1448 button[type=submit]:hover, .hoverclass{
+
 }
 
 div#wpforms-1448 .wpforms-submit-container {
@@ -2422,4 +2427,10 @@ div#wpforms-1448-field_2-container:before {
   background-size: 18px 14px;
 }
 
+#wpforms-1448-field_2-container label.error{
+    position: absolute;
+    left: 60px;
+    top:-10px;
+    color:red;
+}
 /* END WPforms */

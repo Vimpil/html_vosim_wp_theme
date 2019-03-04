@@ -8,4 +8,6 @@ global $js_folder
 <script type="text/javascript" src="<?php echo $js_folder ?>jquery.mmenu.all.js"></script>
 <script type="text/javascript" src="<?php echo $js_folder ?>jquery.mhead.js"></script>
 <script type="text/javascript" src="<?php echo $js_folder ?>jquery.magnific-popup.js"></script>
+<script type="text/javascript" src="<?php echo $js_folder ?>jquery.validate.min.js"></script>
+<script type="text/javascript" src="<?php echo $js_folder ?>additional-methods.js"></script>
 <script type="text/javascript" src="<?php echo $js_folder ?>script.js"></script>

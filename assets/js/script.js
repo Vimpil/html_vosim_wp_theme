@@ -150,7 +150,7 @@ window.onclick = function(e) {
       if (myMainDropdown.classList.contains('show')) {
          myMainDropdown.classList.remove('show');
          $('.dropbtn i.fa').toggleClass('fa-caret-down');
-   $('.dropbtn i.fa').toggleClass('fa-caret-up');
+         $('.dropbtn i.fa').toggleClass('fa-caret-up');
       }
    }
 }
@@ -167,7 +167,7 @@ jQuery(document).ready(function($) {
 
    // $(".accordion").click(function(event) {
 
-    $(".left_nav .menu-main-container ul>li a").click(function(event) {
+   $(".left_nav .menu-main-container ul>li a").click(function(event) {
       /* Act on the event */
       $(this).parent().children('ul').slideToggle();
    });
@@ -180,14 +180,14 @@ jQuery(document).ready(function($) {
       type: 'inline',
       preloader: false,
       focus: '#text_call_back_form',
-      closeOnBgClick:true,
-      closeBtnInside:true,
+      closeOnBgClick: true,
+      closeBtnInside: true,
 
       // When elemened is focused, some mobile browsers in some cases zoom in
       // It looks not nice, so we disable it:
       callbacks: {
          beforeOpen: function() {
-            if($(window).width() < 700) {
+            if ($(window).width() < 700) {
                this.st.focus = false;
             } else {
                this.st.focus = '#text_call_back_form';
@@ -204,8 +204,8 @@ jQuery(document).ready(function($) {
    function scrollFunction() {
       if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
          document.getElementById("back_top_btn").style.display = "block";
-          // document.getElementById("call_to_us").style.display = "block";
-          //  document.getElementById("write_to_us").style.display = "block";
+         // document.getElementById("call_to_us").style.display = "block";
+         //  document.getElementById("write_to_us").style.display = "block";
       } else {
          document.getElementById("back_top_btn").style.display = "none";
          // document.getElementById("call_to_us").style.display = "none";
@@ -236,4 +236,36 @@ jQuery(document).ready(function($) {
          }
       }
    });
+
+   // Validator
+
+   jQuery.validator.setDefaults({
+      debug: true,
+      success: "valid"
+   });
+   $.validator.addMethod("eitherEmailPhone", function(value, element) {
+      isPhone = (this.optional(element) || /^\d+$/.test(value)) && this.getLength($.trim(value), element) <= 12 && this.getLength($.trim(value), element) >= 11;
+      isEmail = this.optional(element) || /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i.test(value);
+
+      return isPhone || isEmail;
+
+   }, "Please enter either phone or e-mail");
+   // $.validator.addMethod('customphone', function(value, element) {
+   //      return this.optional(element) || /^\d{3}-\d{3}-\d{4}$/.test(value);
+   //   }, "Please enter a valid phone number");
+
+
+   $('#wpforms-form-1448').validate({ // initialize the plugin
+      rules: {
+         'wpforms[fields][2]':'eitherEmailPhone',
+         // 'wpforms[fields][2]': {
+         //    required: true,
+         //    email: true,
+         // }
+      }
+   });
+
+
+   // END Validator
+
 });
