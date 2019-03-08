@@ -3,6 +3,7 @@ global $js_folder
  ?>
 <script type="text/javascript" src="<?php echo $js_folder ?>jquery-3.2.1.js"></script>
 <script type="text/javascript" src="<?php echo $js_folder ?>parsley.min.js"></script>
+<script type="text/javascript" src="<?php echo $js_folder ?>ru.js"></script>
 <script type="text/javascript" src="<?php echo $js_folder ?>slick.min.js"></script>
 <script type="text/javascript" src="<?php echo $js_folder ?>hammer.min.js"></script>
 <script type="text/javascript" src="<?php echo $js_folder ?>jquery.mmenu.all.js"></script>

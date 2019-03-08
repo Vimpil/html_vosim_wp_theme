@@ -158,142 +158,139 @@ jQuery(document).ready(function($) {
 
 
 
-         /*Left_nav main*/
-         $(".left_nav .menu-item-has-children>a").click(function(event) {
-            event.preventDefault();
-            $(this).parent().toggleClass('clicked');
-            console.log($(this).parent());
-         });
+   /*Left_nav main*/
+   $(".left_nav .menu-item-has-children>a").click(function(event) {
+      event.preventDefault();
+      $(this).parent().toggleClass('clicked');
+      console.log($(this).parent());
+   });
 
-         // $(".accordion").click(function(event) {
+   // $(".accordion").click(function(event) {
 
-         $(".left_nav .menu-main-container ul>li a").click(function(event) {
-            /* Act on the event */
-            $(this).parent().children('ul').slideToggle();
-         });
+   $(".left_nav .menu-main-container ul>li a").click(function(event) {
+      /* Act on the event */
+      $(this).parent().children('ul').slideToggle();
+   });
 
 
 
-         /*END Left_nav main*/
+   /*END Left_nav main*/
 
-         $('.call_back_form').magnificPopup({
-            type: 'inline',
-            preloader: false,
-            focus: '#text_call_back_form',
-            closeOnBgClick: true,
-            closeBtnInside: true,
+   $('.call_back_form').magnificPopup({
+      type: 'inline',
+      preloader: false,
+      focus: '#text_call_back_form',
+      closeOnBgClick: true,
+      closeBtnInside: true,
 
-            // When elemened is focused, some mobile browsers in some cases zoom in
-            // It looks not nice, so we disable it:
-            callbacks: {
-               beforeOpen: function() {
-                  if ($(window).width() < 700) {
-                     this.st.focus = false;
-                  } else {
-                     this.st.focus = '#text_call_back_form';
-                  }
-               }
-            }
-         });
-
-         // When the user scrolls down 20px from the top of the document, show the button
-         window.onscroll = function() {
-            scrollFunction()
-         };
-
-         function scrollFunction() {
-            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-               document.getElementById("back_top_btn").style.display = "block";
-               // document.getElementById("call_to_us").style.display = "block";
-               //  document.getElementById("write_to_us").style.display = "block";
+      // When elemened is focused, some mobile browsers in some cases zoom in
+      // It looks not nice, so we disable it:
+      callbacks: {
+         beforeOpen: function() {
+            if ($(window).width() < 700) {
+               this.st.focus = false;
             } else {
-               document.getElementById("back_top_btn").style.display = "none";
-               // document.getElementById("call_to_us").style.display = "none";
-               // document.getElementById("write_to_us").style.display = "none";
-
+               this.st.focus = '#text_call_back_form';
             }
          }
+      }
+   });
 
-         // When the user clicks on the button, scroll to the top of the document
-         $("#back_top_btn").click(function(event) {
-            /* Act on the event */
-            document.body.scrollTop = 0; // For Safari
-            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+   // When the user scrolls down 20px from the top of the document, show the button
+   window.onscroll = function() {
+      scrollFunction()
+   };
+
+   function scrollFunction() {
+      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+         document.getElementById("back_top_btn").style.display = "block";
+         // document.getElementById("call_to_us").style.display = "block";
+         //  document.getElementById("write_to_us").style.display = "block";
+      } else {
+         document.getElementById("back_top_btn").style.display = "none";
+         // document.getElementById("call_to_us").style.display = "none";
+         // document.getElementById("write_to_us").style.display = "none";
+
+      }
+   }
+
+   // When the user clicks on the button, scroll to the top of the document
+   $("#back_top_btn").click(function(event) {
+      /* Act on the event */
+      document.body.scrollTop = 0; // For Safari
+      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+   });
+
+
+
+   $('.gallery-item').magnificPopup({
+      type: 'image',
+      gallery: {
+         enabled: true
+      },
+      callbacks: {
+
+         buildControls: function() {
+            // re-appends controls inside the main container
+            this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
+         }
+      }
+   });
+
+   // Validator
+   var validator_sucess = false;
+   var dummyEmail = $('<input data-parsley-type="email">').parsley();
+   var dummyNineDigits = $('<input data-parsley-length="[11, 11]"">').parsley();
+   var Empty = $('<data-parsley-validate-if-empty>').parsley();
+
+   $('input#wpforms-1449-field_2').attr({
+      'data-parsley-emailorid': "",
+      'data-parsley-validate-if-empty': 'true',
+      'data-parsley-required': "true",   
+   });
+
+   Parsley.addValidator('emailorid', {
+      validateString: function(data) {
+         return dummyNineDigits.isValid(true, data) ||
+            dummyEmail.isValid(true, data);
+         //|| 
+         // dummyNineDigits.isValid(true, data);
+      },
+      messages: {
+         en: "*Введите свой e-mail либо телефон"
+      },
+   });
+
+   $('input#wpforms-1449-field_2').on('input paste', function() {
+
+      // $('input#wpforms-1449-field_2').parsley({
+      //    length: '6',
+      // });
+$('input#wpforms-1449-field_2').parsley().validate();
+      // $('input#wpforms-1449-field_2').validate;
+      if ($('input#wpforms-1449-field_2').parsley('emailorid').isValid()) {
+         validator_sucess = true;
+         $('.mfp-content div#wpforms-1449 button[type=submit]').addClass('active');
+         $('.mfp-content div#wpforms-1449 button[type=submit]').attr({
+            'opacity':'1',
          });
 
+      } else {
+         validator_sucess = false;
+         $('.mfp-content div#wpforms-1449 button[type=submit]').removeClass('active');
+      }
+   });
+
+   // END Validator
 
 
-         $('.gallery-item').magnificPopup({
-            type: 'image',
-            gallery: {
-               enabled: true
-            },
-            callbacks: {
+   $(window).keydown(function(event) {
+      if (event.keyCode == 13) {
+         if (validator_sucess == false) {
+            event.preventDefault();
+            return false;
+         }
+      }
+   });
 
-               buildControls: function() {
-                  // re-appends controls inside the main container
-                  this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
-               }
-            }
-         });
-
-         // Validator
-         var validator_sucess=false;
-         var dummyEmail = $('<input data-parsley-type="email">').parsley();
-         var dummyNineDigits = $('<input data-parsley-length="[6, 6]"">').parsley();
-         var Empty = $('<data-parsley-validate-if-empty>').parsley();
-         
-         $('input#wpforms-1449-field_2').attr({
-            'data-parsley-emailorid':"",
-            'data-parsley-validate-if-empty':'true',
-            'data-parsley-required':"true",
-         });
-
-        Parsley.addValidator('emailorid', {               
-               validateString: function(data) {
-                  return dummyNineDigits.isValid(true, data) || 
-                  dummyEmail.isValid(true, data);
-                   //|| 
-                  // dummyNineDigits.isValid(true, data);
-               },
-               messages: {
-                  en: "Is neither a nine digit long number nor a valid email address"
-               },
-            });
-
-            console.log('checking');
-            console.log('dummyNineDigits.isValid(true, data)');
-            console.log(dummyNineDigits.isValid);
-            console.log('mpty.isValid(false, data)');
-            console.log(Empty.isValid);
-
-            $('input#wpforms-1449-field_2').on('input paste', function() {
-
-               // $('input#wpforms-1449-field_2').parsley({
-               //    length: '6',
-               // });
-
-               // $('input#wpforms-1449-field_2').validate;
-               if ($('input#wpforms-1449-field_2').parsley('emailorid').isValid()) {
-                  console.log('parsleyValid');
-                  validator_sucess=true;
-
-               } else {
-                  console.log('not valid');
-                  validator_sucess=false;
-               }
-            });
-
-            // END Validator
-
-
-            $(window).keydown(function(event) {
-               if (event.keyCode == 13) {
-                  if (validator_sucess == false) {
-                     event.preventDefault();
-                     return false;
-                  } 
-               }
-            });
-
-         });
+});
