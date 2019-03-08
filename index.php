@@ -8,6 +8,13 @@ get_header();
 include 'template-parts/php_logger/ChromePhp.php';
 ?>
 <body>
+
+<div id="page" class="main_page">
+  
+  <div class="mh-head Sticky header" id="my-header">
+    <a href="#menu"><span></span></a>
+    Строй Союз
+  </div>
   <main>
     <?php
     global $images_folder;
@@ -64,7 +71,7 @@ include 'template-parts/php_logger/ChromePhp.php';
       Сотрудники, имеющие большой опыт работы, готовы предоставить консультации и полный комплекс услуг по подбору и аренде спецтехники.</p>
       <p>Компания работает на территории Новгородской области и Великого Новгорода. Также специалисты готовы выехать на объекты, находящиеся за пределами области.</p>
       <h3>Мы свяжемся с вами!</h3>
-      <div class="call_back">
+      <!-- <div class="call_back">
         <div class="title">Оставьте свои контактные данные в заявке</div>
         <div class="back">
           <div class="form">
@@ -80,12 +87,14 @@ include 'template-parts/php_logger/ChromePhp.php';
             <button class="yellow_button" id="live_a_request" type="button">Оставить заявку</button>
           </div>
         </div>
-      </div>
+      </div> -->
 
       <?php  wpforms_display("1448","false","false");?>
     </section>
   </main>
+
 </body>
 <?php get_footer();?>
+</div>
 </div>
 </html>

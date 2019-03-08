@@ -158,114 +158,142 @@ jQuery(document).ready(function($) {
 
 
 
-   /*Left_nav main*/
-   $(".left_nav .menu-item-has-children>a").click(function(event) {
-      event.preventDefault();
-      $(this).parent().toggleClass('clicked');
-      console.log($(this).parent());
-   });
+         /*Left_nav main*/
+         $(".left_nav .menu-item-has-children>a").click(function(event) {
+            event.preventDefault();
+            $(this).parent().toggleClass('clicked');
+            console.log($(this).parent());
+         });
 
-   // $(".accordion").click(function(event) {
+         // $(".accordion").click(function(event) {
 
-   $(".left_nav .menu-main-container ul>li a").click(function(event) {
-      /* Act on the event */
-      $(this).parent().children('ul').slideToggle();
-   });
+         $(".left_nav .menu-main-container ul>li a").click(function(event) {
+            /* Act on the event */
+            $(this).parent().children('ul').slideToggle();
+         });
 
 
 
-   /*END Left_nav main*/
+         /*END Left_nav main*/
 
-   $('.call_back_form').magnificPopup({
-      type: 'inline',
-      preloader: false,
-      focus: '#text_call_back_form',
-      closeOnBgClick: true,
-      closeBtnInside: true,
+         $('.call_back_form').magnificPopup({
+            type: 'inline',
+            preloader: false,
+            focus: '#text_call_back_form',
+            closeOnBgClick: true,
+            closeBtnInside: true,
 
-      // When elemened is focused, some mobile browsers in some cases zoom in
-      // It looks not nice, so we disable it:
-      callbacks: {
-         beforeOpen: function() {
-            if ($(window).width() < 700) {
-               this.st.focus = false;
+            // When elemened is focused, some mobile browsers in some cases zoom in
+            // It looks not nice, so we disable it:
+            callbacks: {
+               beforeOpen: function() {
+                  if ($(window).width() < 700) {
+                     this.st.focus = false;
+                  } else {
+                     this.st.focus = '#text_call_back_form';
+                  }
+               }
+            }
+         });
+
+         // When the user scrolls down 20px from the top of the document, show the button
+         window.onscroll = function() {
+            scrollFunction()
+         };
+
+         function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+               document.getElementById("back_top_btn").style.display = "block";
+               // document.getElementById("call_to_us").style.display = "block";
+               //  document.getElementById("write_to_us").style.display = "block";
             } else {
-               this.st.focus = '#text_call_back_form';
+               document.getElementById("back_top_btn").style.display = "none";
+               // document.getElementById("call_to_us").style.display = "none";
+               // document.getElementById("write_to_us").style.display = "none";
+
             }
          }
-      }
-   });
 
-   // When the user scrolls down 20px from the top of the document, show the button
-   window.onscroll = function() {
-      scrollFunction()
-   };
-
-   function scrollFunction() {
-      if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-         document.getElementById("back_top_btn").style.display = "block";
-         // document.getElementById("call_to_us").style.display = "block";
-         //  document.getElementById("write_to_us").style.display = "block";
-      } else {
-         document.getElementById("back_top_btn").style.display = "none";
-         // document.getElementById("call_to_us").style.display = "none";
-         // document.getElementById("write_to_us").style.display = "none";
-
-      }
-   }
-
-   // When the user clicks on the button, scroll to the top of the document
-   $("#back_top_btn").click(function(event) {
-      /* Act on the event */
-      document.body.scrollTop = 0; // For Safari
-      document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
-   });
+         // When the user clicks on the button, scroll to the top of the document
+         $("#back_top_btn").click(function(event) {
+            /* Act on the event */
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+         });
 
 
 
-   $('.gallery-item').magnificPopup({
-      type: 'image',
-      gallery: {
-         enabled: true
-      },
-      callbacks: {
+         $('.gallery-item').magnificPopup({
+            type: 'image',
+            gallery: {
+               enabled: true
+            },
+            callbacks: {
 
-         buildControls: function() {
-            // re-appends controls inside the main container
-            this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
-         }
-      }
-   });
+               buildControls: function() {
+                  // re-appends controls inside the main container
+                  this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
+               }
+            }
+         });
 
-   // Validator
+         // Validator
+         var validator_sucess=false;
+         var dummyEmail = $('<input data-parsley-type="email">').parsley();
+         var dummyNineDigits = $('<input data-parsley-length="[6, 6]"">').parsley();
+         var Empty = $('<data-parsley-validate-if-empty>').parsley();
+         
+         $('input#wpforms-1449-field_2').attr({
+            'data-parsley-emailorid':"",
+            'data-parsley-validate-if-empty':'true',
+            'data-parsley-required':"true",
+         });
 
-   jQuery.validator.setDefaults({
-      debug: true,
-      success: "valid"
-   });
-   $.validator.addMethod("eitherEmailPhone", function(value, element) {
-      isPhone = (this.optional(element) || /^\d+$/.test(value)) && this.getLength($.trim(value), element) <= 12 && this.getLength($.trim(value), element) >= 11;
-      isEmail = this.optional(element) || /^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))$/i.test(value);
+        Parsley.addValidator('emailorid', {               
+               validateString: function(data) {
+                  return dummyNineDigits.isValid(true, data) || 
+                  dummyEmail.isValid(true, data);
+                   //|| 
+                  // dummyNineDigits.isValid(true, data);
+               },
+               messages: {
+                  en: "Is neither a nine digit long number nor a valid email address"
+               },
+            });
 
-      return isPhone || isEmail;
+            console.log('checking');
+            console.log('dummyNineDigits.isValid(true, data)');
+            console.log(dummyNineDigits.isValid);
+            console.log('mpty.isValid(false, data)');
+            console.log(Empty.isValid);
 
-   }, "Please enter either phone or e-mail");
-   // $.validator.addMethod('customphone', function(value, element) {
-   //      return this.optional(element) || /^\d{3}-\d{3}-\d{4}$/.test(value);
-   //   }, "Please enter a valid phone number");
+            $('input#wpforms-1449-field_2').on('input paste', function() {
+
+               // $('input#wpforms-1449-field_2').parsley({
+               //    length: '6',
+               // });
+
+               // $('input#wpforms-1449-field_2').validate;
+               if ($('input#wpforms-1449-field_2').parsley('emailorid').isValid()) {
+                  console.log('parsleyValid');
+                  validator_sucess=true;
+
+               } else {
+                  console.log('not valid');
+                  validator_sucess=false;
+               }
+            });
+
+            // END Validator
 
 
-   $('#wpforms-form-1448').validate({ // initialize the plugin
-      rules: {
-         'wpforms[fields][2]':'eitherEmailPhone',
-         // 'wpforms[fields][2]': {
-         //    required: true,
-         //    email: true,
-         // }
-      }
-   });
+            $(window).keydown(function(event) {
+               if (event.keyCode == 13) {
+                  if (validator_sucess == false) {
+                     event.preventDefault();
+                     return false;
+                  } 
+               }
+            });
 
-
-   // END Validator
-
-});
+         });

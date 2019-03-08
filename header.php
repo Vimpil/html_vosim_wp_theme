@@ -18,17 +18,6 @@
 <html <?php
 language_attributes();
 ?>>
-<div id="page" class="main_page">
-  <div class="mh-head Sticky header" id="my-header">
-    <a hierarchyref="#menu"></a>
-    Строй Союз
-  </div>
-
-<div id="page" class="main_page">
-  <div class="mh-head Sticky header" id="my-header">
-    <a href="#menu"><span></span></a>
-    Строй Союз
-  </div>
 <head>
 <?php
 global $temp_path;
