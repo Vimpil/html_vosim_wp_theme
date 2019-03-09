@@ -179,9 +179,9 @@ jQuery(document).ready(function($) {
    $('.call_back_form').magnificPopup({
       type: 'inline',
       preloader: false,
-      focus: '#text_call_back_form',
-      closeOnBgClick: true,
-      closeBtnInside: true,
+      focus: '#wpforms-1449',
+      // closeOnBgClick: true,
+      // closeBtnInside: true,
 
       // When elemened is focused, some mobile browsers in some cases zoom in
       // It looks not nice, so we disable it:
@@ -190,7 +190,7 @@ jQuery(document).ready(function($) {
             if ($(window).width() < 700) {
                this.st.focus = false;
             } else {
-               this.st.focus = '#text_call_back_form';
+               this.st.focus = '#wpforms-1449';
             }
          }
       }
@@ -239,14 +239,16 @@ jQuery(document).ready(function($) {
 
    // Validator
    var validator_sucess = false;
+   var validator_sucess2 = false;
+
    var dummyEmail = $('<input data-parsley-type="email">').parsley();
    var dummyNineDigits = $('<input data-parsley-length="[11, 11]"">').parsley();
    var Empty = $('<data-parsley-validate-if-empty>').parsley();
 
-   $('input#wpforms-1449-field_2').attr({
+   $('input#wpforms-1449-field_2,input#wpforms-1448-field_2').attr({
       'data-parsley-emailorid': "",
       'data-parsley-validate-if-empty': 'true',
-      'data-parsley-required': "true",   
+      'data-parsley-required': "true",
    });
 
    Parsley.addValidator('emailorid', {
@@ -261,32 +263,45 @@ jQuery(document).ready(function($) {
       },
    });
 
-   $('input#wpforms-1449-field_2').on('input paste', function() {
+   $('input#wpforms-1449-field_2,input#wpforms-1448-field_2 ').on('input paste', function() {
 
-      // $('input#wpforms-1449-field_2').parsley({
-      //    length: '6',
-      // });
-$('input#wpforms-1449-field_2').parsley().validate();
-      // $('input#wpforms-1449-field_2').validate;
+      $('input#wpforms-1449-field_2').parsley().validate();
       if ($('input#wpforms-1449-field_2').parsley('emailorid').isValid()) {
+         validator_sucess2 = true;
+         $('div#wpforms-1449 button[type=submit]').addClass('active');
+         $('div#wpforms-1449 button[type=submit]').attr({
+            'opacity': '1',
+         });
+
+      } else {
+         validator_sucess2 = false;
+         $('div#wpforms-1449 button[type=submit]').removeClass('active');
+      }
+///////////////////////////////////
+
+      $('#wpforms-form-1448 input#wpforms-1448-field_2').parsley().validate();
+
+      if ($('input#wpforms-1448-field_2').parsley('emailorid').isValid()) {
          validator_sucess = true;
-         $('.mfp-content div#wpforms-1449 button[type=submit]').addClass('active');
-         $('.mfp-content div#wpforms-1449 button[type=submit]').attr({
-            'opacity':'1',
+         $('button#wpforms-submit-1448').addClass('active');
+         $('button#wpforms-submit-1448').attr({
+            'opacity': '1',
          });
 
       } else {
          validator_sucess = false;
-         $('.mfp-content div#wpforms-1449 button[type=submit]').removeClass('active');
+         $('div#wpforms-1448 button[type=submit]').removeClass('active');
       }
    });
+
+
 
    // END Validator
 
 
    $(window).keydown(function(event) {
       if (event.keyCode == 13) {
-         if (validator_sucess == false) {
+         if ((validator_sucess == false)&(validator_sucess2 == false)) {
             event.preventDefault();
             return false;
          }

@@ -2472,11 +2472,16 @@ div#wpforms-1448-field_2-container:before,div#wpforms-1449-field_2-container:bef
     left: -9000px !important;
 }
 
-ul#parsley-id-9 {
+ul#parsley-id-9, ul#parsley-id-11{
     position: absolute;
     top: -23px;
     left: 50px;
     list-style-type: none;
     color: red;
+}
+
+ul#parsley-id-11{
+    top: -12px;
+    left: 62px;
 }
 /* END Popup */
