@@ -7,12 +7,15 @@
 <?php get_header();?>
 
 <body>
+	<div id="page" class="main_page">
+  <div class="mh-head Sticky header" id="my-header">
+    <a href="#menu"><span></span></a>
+    Строй Союз
+  </div>
   <main>
-
+  	
   	<?php
-
 global $image_list;
-
 ?>
 
 
@@ -46,11 +49,11 @@ wp_reset_query();
 
 ?>
 
-</section>
+ </section>
   </main>
+
 </body>
-
 <?php get_footer();?>
-
+</div>
 </div>
 </html>

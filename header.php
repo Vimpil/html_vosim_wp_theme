@@ -79,7 +79,7 @@ echo $images_folder
   <a href="tel:88162603686">8 (8162) <b>60-36-86</b></a>
   <a href="tel:88162605578">8 (8162) <b>60-55-78</b></a>
    <span>Звоните с <b>8:00 - 23:00</b> (без выходных)</span>
-  <button class="yellow_button" id="to_book_a_call" type="button">Заказать звонок</button>
+  <a class='call_back_form' href="#wpforms-1449"><button class="yellow_button" id="to_book_a_call" type="button">Заказать звонок</button></a>
 </div>
 </div>
 <?php remove_action('wp_head', '_admin_bar_bump_cb');
