@@ -206,6 +206,12 @@ i.fas.fa-map-marked-alt {
 
 }
 
+@media screen and (min-width: 981px) {
+    div#mm-0 {
+        min-height: auto !important;
+    }
+}
+
 .topnav {
     overflow: hidden;
     list-style-type: none;
@@ -1791,10 +1797,11 @@ button.slick-prev.pull-left.slick-arrow {
     position: absolute;
     bottom: 7.5%;
     right: 41px;
-    z-index: 100;
+    z-index: 0;
     outline: none;
     background-color: gray;
 }
+
 
 button.slick-next.pull-right.slick-arrow {
     display: block;
@@ -1889,6 +1896,9 @@ button.slick-next.pull-right.slick-arrow {
     padding-top: 25px;
 }
 
+.slick-slide.slick-current.slick-active{
+    height: inherit;
+}
 .advantages .box {
     font-family: "HeliosCond Regular";
     font-size: 15px;
@@ -2568,4 +2578,7 @@ ul#parsley-id-11 {
 
 .mh-head.mh-sticky{
     position: fixed;
+}
+.slick-list{
+    z-index: -1;
 }

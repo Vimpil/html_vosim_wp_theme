@@ -1,3 +1,8 @@
+<div id="page" class="main_page">
+    <div class="mh-head Sticky header" id="my-header">
+        <a href="#menu"><span></span></a>
+        Строй Союз
+    </div>
 <?php
 /*
 Template Name: Html_vosim
@@ -8,9 +13,6 @@ get_header();
 include 'template-parts/php_logger/ChromePhp.php';
 ?>
 <body>
-
-
-
   <main>
     <?php
     global $images_folder;
@@ -27,7 +29,7 @@ include 'template-parts/php_logger/ChromePhp.php';
     global $image_list;
     global $found_post;
     global $temp_path;
-    
+
     $found_post = get_post_by_name("main_slider");
     /*debug_to_console(gettype($galleries));*/
     echo apply_filters('the_content', $image_list);

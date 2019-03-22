@@ -61,11 +61,6 @@ echo $temp_path;
 	<link rel="shortcut icon" type="image/png" href="favicon.png">
 </head>
 <header>
-    <div id="page" class="main_page">
-        <div class="mh-head Sticky header" id="my-header">
-            <a href="#menu"><span></span></a>
-            Строй Союз
-        </div>
     <div class="logo_smm">
         <div class="logo"><a href='<?php echo home_url(); ?>'><img src="<?php
                 echo $images_folder
