@@ -4,8 +4,21 @@
  * Template Post Type: page
  */
 ?>
+
 <?php get_header(); ?>
+<?php
+//global $temp_path;
+//$temp_path2=$temp_path.'/template-parts/php_logger/ChromePhp.php';
+//echo 'eccccho<br/>';
+//echo '/var/www/html/wp-content/themes/html_vosim_wp_theme/template-parts/php_logger/ChromePhp.php';
+//echo '<br/>';
+//echo $temp_path2;
+include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
+
+?>
+
 <body>
+
 <div id="page" class="main_page">
     <div class="mh-head Sticky header" id="my-header">
         <a href="#menu"><span></span></a>
@@ -22,12 +35,22 @@
         <section class="main">
             <h1><?php the_title(); ?></h1>
 
-
             <?php
             $args = array(
-                'post_type' => 'product',
-                'posts_per_page' => 10,
-                // 'product_cat'    => 'hoodies'
+	            'posts_per_page' => 10,
+	            'tax_query' => array(
+		            'relation' => 'AND',
+		            array(
+			            'post_type' => 'product',
+			            'taxonomy' => 'product_cat',
+
+			            'terms' => '19',
+			            'include_children' => false,
+		            ),
+	            ),
+	            'orderby' => 'menu_order',
+	            'order' => 'ASC',
+
             );
 
             $loop = new WP_Query($args);

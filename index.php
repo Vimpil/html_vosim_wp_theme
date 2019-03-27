@@ -9,9 +9,11 @@ Template Name: Html_vosim
 */
 get_header();
 ?>
+
 <?php
 include 'template-parts/php_logger/ChromePhp.php';
 ?>
+<?php ChromePhp::log('fasdfsdfasdfa'); ?>
 <body>
   <main>
     <?php
