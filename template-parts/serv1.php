@@ -87,7 +87,7 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
                 echo '<div class="functions">';
 
-                echo '<a href="' . get_permalink() . '">' . '<div class="price">' . "от 750 ";
+                echo '<a href="' . get_permalink() . '">' . '<div class="price">' . "от ".number_format($product->get_price(),0," ", " ")." ";
 
                 echo '<i class="fas fa-ruble-sign">' . "/час" . '</i>';
 

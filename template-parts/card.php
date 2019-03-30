@@ -5,7 +5,9 @@ Template Name: card.php
 * Template Post Type: post, page, product, subcat
 */
 ?>
-
+<?php
+include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
+?>
 <?php get_header(); ?>
 
 <body>
@@ -24,20 +26,68 @@ Template Name: card.php
 		<?php get_template_part('template-parts/navigation/leftnav'); ?>
 
 		<section class="main">
-			<h1><?php the_title(); ?></h1>
+			<h1>
+				<?php the_title(); ?>
+			</h1>
+
 
 			<?php
+
+			global $product;
+
+			$product_cats_ids = wc_get_product_term_ids( $product->get_id(), 'product_cat' );
+
+			$last_product_cats_ids=end($product_cats_ids);
+
+$slug = $post->post_name;
+$terms = get_the_terms( $post->ID, 'product_cat' );
+
 			$args = array(
+
 				'posts_per_page' => 10,
 				'tax_query' => array(
+
 					'relation' => 'AND',
 					array(
 						'post_type' => 'product',
 						'taxonomy' => 'product_cat',
-
-						'terms' => '19',
-						'include_children' => false,
+						"terms"    => 23,
+						'compate'=>'IN',
 					),
+//					array(
+//						'taxonomy' => 'product_cat',
+//						'field'    => 'term_id',
+//						'parent' => 19,
+
+//						"terms"    => 19,
+//						'post_parent__not_in' => array(0),
+//						"operator" => "IN",
+//						'child_of'     => 22,
+//						'parent' => 22,
+
+//                        'operator' => 'NOT IN',
+//					),
+
+//						'terms' => $last_product_cats_ids,
+//						'parent' => 0,
+//						'category__not_in' => 22,
+
+
+//					array(
+//						'taxonomy' => 'product_cat',
+////						"terms"    => 19,
+//						'post_parent__not_in' => array(0),
+//						"operator" => "IN",
+//						'child_of'     => 22
+//
+////                        'operator' => 'NOT EXISTS',
+//					)
+//					array(
+//						'post_type' => 'product',
+//						"taxonomy" => "product_cat",
+//						"terms"    => array_values($product_cats_ids)[0],
+//						"operator" => "NOT IN"
+//					),
 				),
 				'orderby' => 'menu_order',
 				'order' => 'ASC',
@@ -64,9 +114,9 @@ Template Name: card.php
 
 				echo '<div class="descr">';
 
-				echo '<div class="category">';
+				echo '<div class="category gray">';
 
-				echo '<a href="' . get_permalink() . '">' . get_the_title() . '</a>';
+				echo get_the_title();
 
 				echo '</div>';
 
@@ -78,11 +128,16 @@ Template Name: card.php
 
 				echo '<div class="functions">';
 
-				echo '<a href="' . get_permalink() . '">' . '<div class="price">' . "от 750 ";
+				echo '<div class="price">' .number_format($product->get_price(),0," ", " ")." ";
 
-				echo '<i class="fas fa-ruble-sign">' . "/час" . '</i>';
+				echo 'руб./час';
 
-				echo '</div>' . '</a>';
+				echo '</div>';
+
+
+				echo '<button class="yellow_button" id="order" type="button">Забронировать</button>';
+
+
 
 				echo '</div>';
 
