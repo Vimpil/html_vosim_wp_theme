@@ -23,11 +23,6 @@ include 'template-parts/php_logger/ChromePhp.php';
     }
     ?>
     <?php
-    echo '<p>222222222223333333333333344444444444444</p>';
-    echo $get_content = do_shortcode(get_post_by_name('main_slider')->post_content);
-    echo '<p>content!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!</p>';
-    ?>
-    <?php
     global $image_list;
     global $found_post;
     global $temp_path;
@@ -41,6 +36,13 @@ include 'template-parts/php_logger/ChromePhp.php';
     <?php get_template_part('template-parts/navigation/leftnav');?>
     <section class="main">
       <!-- {%- include sitemap.html -%} -->
+	    <?php
+
+	    if ( function_exists('yoast_breadcrumb') ) {
+		    yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+	    }
+	    ?>
+
       <?php get_template_part('template-parts/sliders/slider');?>
       <h3>Наша спецтехника</h3>
       <?php get_template_part('template-parts/sliders/gallerymain');?>

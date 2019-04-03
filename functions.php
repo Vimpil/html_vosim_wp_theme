@@ -196,6 +196,8 @@ function kama_excerpt( $args = '' ){
 		$text .= $text_append;
 
 	return ( $rg->autop && $text ) ? "<p>$text</p>" : $text;
+
+
 }
 /* Сhangelog:
  * 2.6.3 - Рефакторинг
@@ -204,7 +206,29 @@ function kama_excerpt( $args = '' ){
  *       - Немного изменил логику кода.
  */
 
+/*  */
 
+// How to Show Parent Category Products Only Without Subcategories
+
+function exclude_product_cat_children($wp_query) {
+	if ( isset ( $wp_query->query_vars['product_cat'] ) && $wp_query->is_main_query()) {
+		$wp_query->set('tax_query', array(
+				array (
+					'taxonomy' => 'product_cat',
+					'field' => 'slug',
+					'terms' => $wp_query->query_vars['product_cat'],
+					'include_children' => false
+				)
+			)
+		);
+	}
+}
+add_filter('pre_get_posts', 'exclude_product_cat_children');
+
+// END How to Show Parent Category Products Only Without Subcategories
+function runMyFunction() {
+	echo 'I just ran a php function';
+}
 
 ?>
 

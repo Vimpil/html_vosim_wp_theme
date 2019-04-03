@@ -26,6 +26,11 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 		<?php get_template_part('template-parts/navigation/leftnav'); ?>
 
 		<section class="main">
+			<?php
+			if ( function_exists('yoast_breadcrumb') ) {
+				yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+			}
+			?>
 			<h1>
 				<?php the_title(); ?>
 			</h1>
@@ -39,20 +44,35 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
 			$last_product_cats_ids=end($product_cats_ids);
 
-$slug = $post->post_name;
-$terms = get_the_terms( $post->ID, 'product_cat' );
+
+
+ChromePhp::log('last_product_cats_ids');
+ChromePhp::log($product_cats_ids);
+ChromePhp::log('last_product_cats_ids');
+
+echo $product->get_title();
+			ChromePhp::log('get_term_by(get_title())');
+ChromePhp::log(get_term_by('name',
+    $product->get_title()));
+			ChromePhp::log('get_term_by(get_title())');
+
+            $slug = $post->post_name;
+            $terms = get_the_terms( $post->ID, 'product_cat' );
 
 			$args = array(
 
-				'posts_per_page' => 10,
-				'tax_query' => array(
+                        'posts_per_page' => 10,
+                        'tax_query' => array(
 
-					'relation' => 'AND',
+                        'relation' => 'AND',
+
 					array(
+
 						'post_type' => 'product',
 						'taxonomy' => 'product_cat',
-						"terms"    => 23,
+						"terms"    => $product_cats_ids[1],
 						'compate'=>'IN',
+
 					),
 //					array(
 //						'taxonomy' => 'product_cat',
@@ -89,6 +109,8 @@ $terms = get_the_terms( $post->ID, 'product_cat' );
 //						"operator" => "NOT IN"
 //					),
 				),
+
+				'post__not_in' => array(wc_get_product()->get_id()),
 				'orderby' => 'menu_order',
 				'order' => 'ASC',
 
@@ -134,9 +156,12 @@ $terms = get_the_terms( $post->ID, 'product_cat' );
 
 				echo '</div>';
 
+				echo '<button class="yellow_button" id="order" type="button" value="'. get_the_title() .'">Забронировать</button>';
 
-				echo '<button class="yellow_button" id="order" type="button">Забронировать</button>';
 
+  if (isset($_GET['hello'])) {
+    runMyFunction();
+  }
 
 
 				echo '</div>';

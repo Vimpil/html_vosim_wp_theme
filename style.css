@@ -278,10 +278,16 @@ ul.topnav li.right {
     border-top: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
+    height: 100%;
 }
 
 .topnav .search-container button:hover {
     background: white;
+}
+
+
+.search-container {
+    height: 34px;
 }
 
 .search-container i {
@@ -302,7 +308,7 @@ input[type="text"]:focus {
 }
 
 .navbar a:hover, .dropdown:hover .dropbtn {
-    background-color: red;
+     background-color: red;
 }
 
 .dropdown .dropbtn {
@@ -1760,6 +1766,7 @@ button#write_to_us {
     background-color: #bfbfbf;
     background-image: none;
     border: #bebebe;
+    z-index: 1;
 }
 
 .booking_box button#order:hover {
@@ -2118,6 +2125,7 @@ div#my-header {
 
 .services .descr {
     margin-left: 0%;
+    width: 250px;
 }
 
 @media screen and (max-width: 931px) {
@@ -2181,9 +2189,9 @@ sup {
     padding-left: 0;
 }
 
-.topnav .dropdown-content ul > li {
-    margin-bottom: 20px;
-    padding-left: 30px;
+.topnav .dropdown-content ul li {
+    padding-left: 0;
+    display: table;
 }
 
 .topnav .dropdown-content ul ul li:first-child {

@@ -7,7 +7,11 @@ global $temp_path;
  <aside class="left_nav">
 
        <?php
-wp_nav_menu(array());
+//       $theme_locations = get_nav_menu_locations();
+//       ChromePhp::log($theme_locations);
+//       echo 'theme locations';
+
+       wp_nav_menu( array());
 ?>
       <div class="promote">
         <?php

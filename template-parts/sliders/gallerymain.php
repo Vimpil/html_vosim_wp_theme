@@ -5,12 +5,21 @@ global $images_folder
       
       <?php
       wp_nav_menu([
-        'theme_location' => 'primary',
-        'menu'            => 'Technic Rent',
-        'depth'           => 0,
-        'exclude'         => '1340',
-        'level'           => 2,
-        'child_of' => 'Аренда спецтехники',
+
+	      'menu' => 'Technic Rent',
+          'exclude' => 1287,
+
+//        'theme_location' => 'Main',
+//        'child_of' => 1419,
+//
+//        'menu'            => 'Main',
+//
+//        'level' => 2,
+//        'exclude'=> 1340,
+//        'depth' => 3,
+//        'show_parent' => false,
+
+
       ]);
       ?>
 

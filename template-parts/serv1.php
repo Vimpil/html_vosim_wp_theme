@@ -33,6 +33,11 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
         <?php get_template_part('template-parts/navigation/leftnav'); ?>
 
         <section class="main">
+	        <?php
+	        if ( function_exists('yoast_breadcrumb') ) {
+		        yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
+	        }
+	        ?>
             <h1><?php the_title(); ?></h1>
 
             <?php

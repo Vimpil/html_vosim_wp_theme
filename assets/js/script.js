@@ -176,12 +176,16 @@ jQuery(document).ready(function($) {
 
    /*END Left_nav main*/
 
+
    $('.call_back_form').magnificPopup({
+
       type: 'inline',
       preloader: false,
       focus: '#wpforms-1449',
+
       // When elemened is focused, some mobile browsers in some cases zoom in
       // It looks not nice, so we disable it:
+
       callbacks: {
          beforeOpen: function() {
             if ($(window).width() < 700) {
@@ -191,6 +195,7 @@ jQuery(document).ready(function($) {
             }
          }
       }
+
    });
 
    // When the user scrolls down 20px from the top of the document, show the button
@@ -221,10 +226,12 @@ jQuery(document).ready(function($) {
 
 
    $('.gallery-item').magnificPopup({
+
       type: 'image',
       gallery: {
          enabled: true
       },
+
       callbacks: {
 
          buildControls: function() {
@@ -232,6 +239,7 @@ jQuery(document).ready(function($) {
             this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
          }
       }
+
    });
 
    // Validator
@@ -305,4 +313,17 @@ jQuery(document).ready(function($) {
       }
    });
 
+
+    $('button#order').on("click", function(){
+     Activate_callbackfn($(this).val())
+    });
+
 });
+
+
+function Activate_callbackfn(service_name) {
+    $("button#write_to_us").trigger("click");
+    $serv_temp="Здравствуйте, необходимо заказать "+service_name+".";
+    $("textarea#wpforms-1449-field_3").val($serv_temp);
+    return null;
+}
