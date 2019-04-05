@@ -14,13 +14,12 @@ get_header();
 include 'template-parts/php_logger/ChromePhp.php';
 ?>
 <?php ChromePhp::log('fasdfsdfasdfa'); ?>
+
 <body>
   <main>
     <?php
     global $images_folder;
-    if (shortcode_exists('button')) {
-    // The [gallery] short code exists.
-    }
+
     ?>
     <?php
     global $image_list;
@@ -42,7 +41,7 @@ include 'template-parts/php_logger/ChromePhp.php';
 		    yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
 	    }
 	    ?>
-
+	    <?php get_search_form(); ?>
       <?php get_template_part('template-parts/sliders/slider');?>
       <h3>Наша спецтехника</h3>
       <?php get_template_part('template-parts/sliders/gallerymain');?>

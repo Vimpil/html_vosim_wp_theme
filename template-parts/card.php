@@ -1,3 +1,8 @@
+<div id="page" class="main_page">
+    <div class="mh-head Sticky header" id="my-header">
+        <a href="#menu"><span></span></a>
+        Строй Союз
+    </div>
 <?php
 /*
 Template Name: card.php
@@ -12,11 +17,7 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
 <body>
 
-<div id="page" class="main_page">
-	<div class="mh-head Sticky header" id="my-header">
-		<a href="#menu"><span></span></a>
-		Строй Союз
-	</div>
+
 	<main>
 		<?php
 		global $image_list;
@@ -46,15 +47,7 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
 
 
-ChromePhp::log('last_product_cats_ids');
-ChromePhp::log($product_cats_ids);
-ChromePhp::log('last_product_cats_ids');
-
-echo $product->get_title();
-			ChromePhp::log('get_term_by(get_title())');
-ChromePhp::log(get_term_by('name',
-    $product->get_title()));
-			ChromePhp::log('get_term_by(get_title())');
+    $product->get_title();
 
             $slug = $post->post_name;
             $terms = get_the_terms( $post->ID, 'product_cat' );

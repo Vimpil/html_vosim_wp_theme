@@ -1,5 +1,4 @@
 <?php
-
 /* disable gutenberg */
 
 // disable for posts
@@ -226,9 +225,12 @@ function exclude_product_cat_children($wp_query) {
 add_filter('pre_get_posts', 'exclude_product_cat_children');
 
 // END How to Show Parent Category Products Only Without Subcategories
-function runMyFunction() {
-	echo 'I just ran a php function';
-}
 
+//add_action( 'sitemap_titles_replace', 'remove_wcpgsk_email_order_table' );
+//function remove_wcpgsk_email_order_table() {
+//
+//	global $wcpgsk;
+//	remove_action( 'woocommerce_email_after_order_table', array( $wcpgsk, 'wcpgsk_email_after_order_table' ) );
+//
+//}
 ?>
-
