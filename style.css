@@ -217,6 +217,7 @@ i.fas.fa-map-marked-alt {
     list-style-type: none;
     display: flex;
     background-image: linear-gradient(#484848, #2f2f2f);
+    height:48px;
 }
 
 .topnav a {
@@ -224,7 +225,7 @@ i.fas.fa-map-marked-alt {
     display: block;
     color: white;
     text-align: center;
-    padding: 13px 41px;
+    padding: 13px 39px;
     text-decoration: none;
     font-size: 17px;
     position: relative;
@@ -2254,7 +2255,50 @@ sup {
     text-decoration: underline;
     border-bottom: 1px solid #4789fc;
 }
-
+input.search-field {
+    padding: 6px;
+    margin-top: 7px;
+    font-size: 17px;
+    border: none;
+    max-width: 202px;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top: 1px solid black;
+    border-left: 1px solid black;
+    border-bottom: 1px solid black;
+    padding-bottom: 7px;
+}
+input.search-field:focus{
+    outline:none;
+}
+::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+form.search-form {
+    position: relative;
+}
+.topnav i.fa.fa-search {
+    position: absolute;
+    left: 196px;
+    top: 16px;
+    font-size: 16px;
+}
+input.search-submit {
+    float: right;
+    padding: 6.5px 10px;
+    margin-top: 7px;
+    background: white;
+    color: gray;
+    font-size: 17px;
+    border: none;
+    cursor: pointer;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    margin-bottom: 0;
+    border-top: 1px solid black;
+    border-right: 1px solid black;
+    border-bottom: 1px solid black;
+}
 /* END generated top-nav menu */
 
 /* Generated top-nav menu */

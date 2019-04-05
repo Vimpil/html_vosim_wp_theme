@@ -318,6 +318,16 @@ jQuery(document).ready(function($) {
      Activate_callbackfn($(this).val())
     });
 
+    /*
+    * Search Activation
+    * */
+
+    $(".topnav input.search-field").on('keyup', function (e) {
+        if (e.keyCode == 13) {
+            $('.topnav input.search-submit').trigger('click');
+        }
+    });
+
 });
 
 

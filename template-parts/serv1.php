@@ -6,7 +6,7 @@
 <?php
 /**
  * Template Name: serv1.php
- * Template Post Type: page
+ * Template Post Type: page,product
  */
 ?>
 

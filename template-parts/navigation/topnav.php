@@ -18,9 +18,11 @@ global $images_folder
   <a href="/index.php/all_news/" class="menu-title">Новости</a>
   <a href="#contact" class="menu-title">Контакты</a>
   <a href="index.php/sitemap/" class="menu-title">Карта сайта</a>
-  <div class="search-container">
-    <input type="text" placeholder="Поиск..">
-    <button type="button"><i class="fa fa-search"></i></button>
-  </div>
+
+	<?php get_search_form(); ?>
+<!--    <div class="search-container">-->
+<!--        <input type="text" placeholder="Поиск..">-->
+<!--        <button type="button"><i class="fa fa-search"></i></button>-->
+<!--    </div>-->
 </div>
 
