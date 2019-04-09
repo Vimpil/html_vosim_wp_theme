@@ -26,14 +26,11 @@ $font_folder = "/assets/css/fonts/";
 /* default wp_nav_menu id changed */
 
 /**/
+add_action('init', 'register_custom_menu');
+function register_custom_menu() {
+	register_nav_menu('custom_menu', __('Custom Menu'));
+}
 
-add_action('after_setup_theme', function () {
-	register_nav_menus([
-		'header-menu' => 'Top zone',
-		'footer-menu' => 'Bottom zone',
-		'footer-menu' => 'Bottom zone 2',
-	]);
-});
 
 // Изменяет основные параметры меню
 add_filter('wp_nav_menu_args', 'filter_wp_menu_args');
@@ -233,4 +230,23 @@ add_filter('pre_get_posts', 'exclude_product_cat_children');
 //	remove_action( 'woocommerce_email_after_order_table', array( $wcpgsk, 'wcpgsk_email_after_order_table' ) );
 //
 //}
+
+function my_breadcrumb($theme_location = 'sitemap', $separator = ' &gt; ') {
+
+
+
+	$items = wp_get_nav_menu_items($theme_location);
+	if($items) {
+		_wp_menu_item_classes_by_context( $items ); // Set up the class variables, including current-classes
+		$crumbs = array();
+
+		foreach ( $items as $item ) {
+			if ( $item->current_item_ancestor || $item->current ) {
+				$crumbs[] = "<a href=\"{$item->url}\" title=\"{$item->title}\">{$item->title}</a>";
+			}
+		}
+		echo implode( $separator, $crumbs );
+	}
+}
+
 ?>

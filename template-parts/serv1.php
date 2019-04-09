@@ -34,11 +34,11 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
         <?php get_template_part('template-parts/navigation/leftnav'); ?>
 
         <section class="main">
-	        <?php
-	        if ( function_exists('yoast_breadcrumb') ) {
-		        yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
-	        }
-	        ?>
+
+            <div class="breadcrumb">
+                    <?php my_breadcrumb('sitemap'); ?>
+            </div>
+
             <h1><?php the_title(); ?></h1>
 
             <?php
@@ -61,11 +61,14 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
             $loop = new WP_Query($args);
 
+
+
             while ($loop->have_posts()) : $loop->the_post();
 
                 global $product;
 
-                if ($product->get_attribute('скидка') == 'true') {
+
+	            if ($product->get_attribute('скидка') == 'true') {
                     echo '<div class="services booking_box discount">';
                 } else {
                     echo '<div class="services booking_box">';

@@ -6,6 +6,7 @@
 <?php
 /*
 Template Name: Html_vosim
+Template Post Type: page,
 */
 get_header();
 ?>
@@ -15,10 +16,11 @@ include 'template-parts/php_logger/ChromePhp.php';
 ?>
 <body>
   <main>
+
     <?php
     global $images_folder;
-
     ?>
+
     <?php
     global $image_list;
     global $found_post;
@@ -33,14 +35,11 @@ include 'template-parts/php_logger/ChromePhp.php';
     <?php get_template_part('template-parts/navigation/leftnav');?>
     <section class="main">
       <!-- {%- include sitemap.html -%} -->
-	    <?php
 
-	    if ( function_exists('yoast_breadcrumb') ) {
-		    yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
-	    }
-	    ?>
+
 
       <?php get_template_part('template-parts/sliders/slider');?>
+
       <h3>Наша спецтехника</h3>
       <?php get_template_part('template-parts/sliders/gallerymain');?>
       <h3>Преимущества</h3>
