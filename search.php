@@ -24,7 +24,9 @@
 
 	foreach($query_args as $key => $string) {
 		$query_split = explode("=", $string);
-		$search_query[$query_split[0]] = urldecode($query_split[1]);
+		if($query_string) {
+			$search_query[ $query_split[0] ] = urldecode( $query_split[1] );
+		}
 	} // foreach
 
 	$the_query = new WP_Query($search_query);
@@ -82,8 +84,6 @@
 
                 ?>
 
-
-
 			<?php endwhile; ?>
 		</ul>
 		<!-- end of the loop -->
@@ -91,7 +91,7 @@
 		<?php wp_reset_postdata(); ?>
 
 	<?php else : ?>
-		<p><?php _e( 'Sorry, no posts matched your criteria.' ); ?></p>
+		<p><?php _e( 'Извините, нет товара, который бы соответствовал данному критерию.' ); ?></p>
 	<?php endif; ?>
 
         </section>

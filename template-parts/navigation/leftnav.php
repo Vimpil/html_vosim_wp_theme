@@ -6,12 +6,26 @@ global $temp_path;
 ?>
  <aside class="left_nav">
 
-       <?php
+     <!-- GET category by name-->
+	 <?php
+	 $product_categories = get_terms( 'product_cat' );
+	 foreach ($product_categories as $termkey=>$termvalue) {
+		 if($termvalue->name==get_the_title()){
+			 $current_cat_id= $termvalue->term_id;
+		 }
+	 }
+	 ?>
+     <!--END GET category by name-->
+
+
+     <?php
 //       $theme_locations = get_nav_menu_locations();
 //       ChromePhp::log($theme_locations);
 //       echo 'theme locations';
 
-       wp_nav_menu( array());
+
+       wp_nav_menu( array(
+       ));
 ?>
       <div class="promote">
         <?php

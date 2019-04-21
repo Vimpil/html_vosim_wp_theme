@@ -2183,9 +2183,7 @@ sup {
 }
 
 /* Generated top-nav menu */
-.topnav .dropdown-content ul li:first-child {
-    display: none;
-}
+
 
 .topnav .dropdown-content ul li:nth-child(2) {
     padding-left: 0;
@@ -2261,7 +2259,7 @@ input.search-field {
     margin-top: 7px;
     font-size: 17px;
     border: none;
-    max-width: 202px;
+    max-width: 222px;
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
     border-top: 1px solid black;
@@ -2283,8 +2281,11 @@ form.search-form {
     left: 196px;
     top: 16px;
     font-size: 16px;
+    z-index: 2;
+    pointer-events: none;
 }
 input.search-submit {
+    position: absolute;
     float: right;
     padding: 6.5px 10px;
     margin-top: 7px;
@@ -2299,7 +2300,32 @@ input.search-submit {
     border-top: 1px solid black;
     border-right: 1px solid black;
     border-bottom: 1px solid black;
+    left: 190px;
+    width: 33px;
+    z-index: 1;
+    top: 0;
 }
+.pointer-events-none{
+    pointer-events: none;
+}
+
+input.search-submit:focus {
+    outline-width:0;
+}
+
+#menu i.fa.fa-search {
+    position: absolute;
+    left: 199px;
+    top: 19px;
+    z-index: 2;
+}
+#menu input.search-field {
+    margin-left: 18px;
+    max-width: 192px;
+}
+#menu div#mm-2{
+      margin-top: 50px;
+  }
 /* END generated top-nav menu */
 
 /* Generated top-nav menu */
@@ -2578,9 +2604,29 @@ ul#parsley-id-9, ul#parsley-id-11 {
     color: red;
 }
 
+.mfp-container ul#parsley-id-9, ul#parsley-id-11 {
+    top: -12px;
+}
+
 ul#parsley-id-11 {
     top: -12px;
     left: 62px;
+}
+
+ul#parsley-id-19 {
+    position: absolute;
+    top: -12px;
+    left: 61px;
+    list-style-type: none;
+    color: red;
+}
+
+ul#parsley-id-17{
+    position: absolute;
+    top: -12px;
+    left: 61px;
+    list-style-type: none;
+    color: red;
 }
 
 .phone button#to_book_a_call {
@@ -2643,7 +2689,7 @@ ul#parsley-id-11 {
     z-index: -1;
 }
 .breadcrumb {
-    padding: 8px 15px;
+    padding: 18px 15px;
     list-style: none;
     background-color: #f5f5f5;
     border-radius: 4px;
@@ -2652,4 +2698,9 @@ ul#parsley-id-11 {
 .breadcrumb a {
     color: #428bca;
     text-decoration: none;
+    padding: 0 8px;
+}
+.breadcrumb a:last-child{
+    color:#494949;
+    pointer-events: none;
 }

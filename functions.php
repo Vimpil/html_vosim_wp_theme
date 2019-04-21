@@ -231,7 +231,7 @@ add_filter('pre_get_posts', 'exclude_product_cat_children');
 //
 //}
 
-function my_breadcrumb($theme_location = 'sitemap', $separator = ' &gt; ') {
+function my_breadcrumb($theme_location = 'sitemap', $separator = '<i class="fas fa-caret-right" style="color:#b7b7b7;"></i> ') {
 
 
 
@@ -248,5 +248,120 @@ function my_breadcrumb($theme_location = 'sitemap', $separator = ' &gt; ') {
 		echo implode( $separator, $crumbs );
 	}
 }
+
+/*   Separate child menu     */
+
+/**
+ * Returns all child nav_menu_items under a specific parent
+ *
+ * @param int the parent nav_menu_item ID
+ * @param array nav_menu_items
+ * @param bool gives all children or direct children only
+ * @return array returns filtered array of nav_menu_items
+ */
+function get_nav_menu_item_children( $parent_id, $nav_menu_items, $depth = true ) {
+	$nav_menu_item_list = array();
+	foreach ( (array) $nav_menu_items as $nav_menu_item ) {
+		if ( $nav_menu_item->menu_item_parent == $parent_id ) {
+			$nav_menu_item_list[] = $nav_menu_item;
+			if ( $depth ) {
+				if ( $children = get_nav_menu_item_children( $nav_menu_item->ID, $nav_menu_items ) )
+					$nav_menu_item_list = array_merge( $nav_menu_item_list, $children );
+			}
+		}
+	}
+	return $nav_menu_item_list;
+}
+
+/*   END Separate child menu     */
+
+/* get_nav_menu_item_children */
+
+
+function wp_menu_id_by_name( $name ) {
+	$menus = get_terms( 'nav_menu' );
+
+	foreach ( $menus as $menu ) {
+		if( $name === $menu->name ) {
+			return $menu->term_id;
+		}
+	}
+	return false;
+}
+
+//echo 'My Special Menu id is ' . wp_menu_id_by_name( 'Main' );
+
+function olLiTree( $tree ) {
+
+
+	$ulparent=0;
+	$liparent=0;
+	$depth=1;
+
+
+	foreach ( $tree as $key=>$item ) {
+
+//		ChromePhp::log('$item->post_parent');
+//		ChromePhp::log($item->post_parent);
+//		ChromePhp::log($item->post_parent==0);
+//		ChromePhp::log('$previtem');
+//		ChromePhp::log($previtem);
+
+		ChromePhp::log('$item->title');
+		ChromePhp::log($item->title);
+		ChromePhp::log('$item->db_id');
+		ChromePhp::log($item->db_id);
+		ChromePhp::log('$ulparent');
+		ChromePhp::log($ulparent);
+		ChromePhp::log('$liparent');
+		ChromePhp::log($liparent);
+		ChromePhp::log('$item->post_parent');
+		ChromePhp::log($item->post_parent);
+		if($item->post_parent==0||$key==0) {
+			if($key==0){
+				echo '<ul>';
+				$ulparent=$item->db_id;
+			}
+			if($key!=0) {
+				echo "<li id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"><a>";
+				if($item->thumbnail_id!=0){
+					$image = wp_get_attachment_url($item->thumbnail_id);
+					echo "<img width=\"36\" height=\"24\" src=\"{$image}\" class=\"menu-image menu-image-title-after\" alt=\"\">";
+				}
+				echo "$item->title</a> </li>";
+			}
+			$liparent=$item->object_id;
+		}elseif ($item->post_parent==$liparent) {
+			echo '<li>';
+			echo '<ul >';
+			echo "<a class=\"menu-image-title\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </a>";
+			$ulparent=$item->db_id;
+			$liparent=$item->db_id;
+			$depth++;
+		}else{
+			ChromePhp::log('$item->post_parent==$ulparent');
+			ChromePhp::log('debth!!!!!');
+			ChromePhp::log($depth);
+			echo str_repeat("</ul></li>",$depth-1);
+			echo '<li>';
+			echo '<ul class="submenu">';
+			echo "<a class=\"menu-image-title\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </a>";
+			$depth=2;
+		}
+
+//		elseif ($item->post_parent!=$previtem){
+//			str_repeat('</li>',$depth);
+//			ChromePhp::log('FLAG');
+//			ChromePhp::log($item);
+//			$depth=1;
+//			olLiTree( $tree );
+//
+//		}
+
+	}
+}
+
+/* END get_nav_menu_item_children */
+
 
 ?>

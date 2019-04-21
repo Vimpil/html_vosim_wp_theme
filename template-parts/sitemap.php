@@ -22,11 +22,11 @@
 		<?php get_template_part('template-parts/navigation/leftnav'); ?>
 
 		<section class="main">
-			<?php
-			if ( function_exists('yoast_breadcrumb') ) {
-				yoast_breadcrumb( '<p id="breadcrumbs">','</p>' );
-			}
-			?>
+
+			<div class="breadcrumb">
+                    <?php my_breadcrumb('sitemap'); ?>
+            </div>
+
 			<h1><?php the_title(); ?></h1>
 
 

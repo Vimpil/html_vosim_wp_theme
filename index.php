@@ -17,6 +17,8 @@ include 'template-parts/php_logger/ChromePhp.php';
 <body>
   <main>
 
+
+
     <?php
     global $images_folder;
     ?>
@@ -31,6 +33,7 @@ include 'template-parts/php_logger/ChromePhp.php';
     echo apply_filters('the_content', $image_list);
     /*array_to_html($galleries);*/
     ?>
+
     <?php get_template_part('template-parts/navigation/topnav');?>
     <?php get_template_part('template-parts/navigation/leftnav');?>
     <section class="main">
@@ -88,7 +91,9 @@ include 'template-parts/php_logger/ChromePhp.php';
       </div> -->
 
       <?php  wpforms_display("1448","false","false");?>
+
     </section>
+
   </main>
 
 </body>

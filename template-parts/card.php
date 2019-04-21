@@ -28,15 +28,25 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
 		<section class="main">
 
-            <div class="breadcrumb">
                 <div class="breadcrumb"><?php my_breadcrumb('Main'); ?></div>
-            </div>
+
 			<h1>
 				<?php the_title(); ?>
 			</h1>
 
+            <!-- GET category by name-->
+
+            <!--END GET category by name-->
 
 			<?php
+			$product_categories = get_terms( 'product_cat' );
+			foreach ($product_categories as $termkey=>$termvalue) {
+
+				if($termvalue->name==get_the_title()){
+					$current_cat_id= $termvalue->term_id;
+
+				}
+			}
 
 			global $product;
 
@@ -46,12 +56,15 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
 
 
+
     $product->get_title();
 
             $slug = $post->post_name;
             $terms = get_the_terms( $post->ID, 'product_cat' );
 
-			$args = array(
+
+
+            $args = array(
 
                         'posts_per_page' => 10,
                         'tax_query' => array(
@@ -62,7 +75,7 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
 						'post_type' => 'product',
 						'taxonomy' => 'product_cat',
-						"terms"    => $product_cats_ids[1],
+						"terms"    => $current_cat_id,
 						'compate'=>'IN',
 
 					),

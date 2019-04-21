@@ -5,7 +5,7 @@
     </div>
 <?php
 /**
- * Template Name: serv1.php
+ * Template Name: serv2.php
  * Template Post Type: page,product
  */
 ?>
@@ -41,17 +41,16 @@ include get_stylesheet_directory().'/template-parts/php_logger/ChromePhp.php';
 
             <h1><?php the_title(); ?></h1>
 
-
-<!-- GET category by name-->
-<?php
-$product_categories = get_terms( 'product_cat' );
-foreach ($product_categories as $termkey=>$termvalue) {
-    if($termvalue->name==get_the_title()){
-        $current_cat_id= $termvalue->term_id;
-    }
-}
-?>
-<!--END GET category by name-->
+            <!-- GET category by name-->
+	        <?php
+	        $product_categories = get_terms( 'product_cat' );
+	        foreach ($product_categories as $termkey=>$termvalue) {
+		        if($termvalue->name==get_the_title()){
+			        $current_cat_id= $termvalue->term_id;
+		        }
+	        }
+	        ?>
+            <!--END GET category by name-->
 
             <?php
             $args = array(
@@ -64,14 +63,13 @@ foreach ($product_categories as $termkey=>$termvalue) {
 
 			            'terms' => $current_cat_id,
 			            'include_children' => false,
+
 		            ),
 	            ),
 	            'orderby' => 'menu_order',
 	            'order' => 'ASC',
 
             );
-
-
 
             $loop = new WP_Query($args);
 
