@@ -7,7 +7,9 @@ global $temp_path;
  <aside class="left_nav">
 
      <!-- GET category by name-->
-	 <?php
+
+     <?php
+
 	 $product_categories = get_terms( 'product_cat' );
 	 foreach ($product_categories as $termkey=>$termvalue) {
 		 if($termvalue->name==get_the_title()){
@@ -23,9 +25,11 @@ global $temp_path;
 //       ChromePhp::log($theme_locations);
 //       echo 'theme locations';
 
+     $args = array();
+     $nav_menu_items=wp_get_nav_menu_items( 2, $args );
+     $itm_chldrn=get_nav_menu_item_children( 1550, $nav_menu_items, $depth = true );
+     leftnav_menu_gen($itm_chldrn);
 
-       wp_nav_menu( array(
-       ));
 ?>
       <div class="promote">
         <?php
@@ -50,6 +54,7 @@ query_posts(array('category_name' => 'news', 'order' => 'ASC', 'posts_per_page' 
 while (have_posts()):
 	the_post();
 	?>
+
 	<span class="date"><?php the_date('Y/m/d');?></span>
 	  <div class="news_link"><a href="<?php echo get_permalink($post); ?>"><?php
 	the_title();?></a></div>

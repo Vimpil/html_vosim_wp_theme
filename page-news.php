@@ -23,6 +23,9 @@ global $image_list;
 	<?php get_template_part('template-parts/navigation/leftnav');?>
 
 <section class="main">
+    <div class="breadcrumb">
+		<?php my_breadcrumb('sitemap'); ?>
+    </div>
 <h3>Новости</h3>
 <?php
 

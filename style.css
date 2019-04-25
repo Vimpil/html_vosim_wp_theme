@@ -1,4 +1,11 @@
 @font-face {
+    font-family: 'FontAwesome';
+    font-weight: normal;
+    font-style: normal;
+    src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?v=4.3.0");
+    src: url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.eot?#iefix&v=4.3.0") format("embedded-opentype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff2?v=4.3.0") format("woff2"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.woff?v=4.3.0") format("woff"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.ttf?v=4.3.0") format("truetype"), url("https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/fonts/fontawesome-webfont.svg?v=4.3.0#fontawesomeregular") format("svg");
+}
+@font-face {
     font-family: 'Tahoma Regular';
     src: url('assets/css/fonts/Tahoma.woff2') format('woff2'), url('assets/css/fonts/Tahoma.woff') format('woff'), url('assets/css/fonts/Tahoma.ttf') format('truetype'), url('assets/css/fonts/Tahoma.eot') format('truetype');
     font-weight: normal;
@@ -348,7 +355,7 @@ input[type="text"]:focus {
     box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
     z-index: 100;
     width: 960px;
-    background-color: white;
+    background-color: #e8e8e8;
 }
 
 .dropdown-content a {
@@ -358,7 +365,7 @@ input[type="text"]:focus {
     text-decoration: none;
     display: block;
     text-align: left;
-    max-width: 200px;
+    max-width: 214px;
 }
 
 /*.dropdown-content a:hover {*/
@@ -1828,10 +1835,106 @@ button.slick-next.pull-right.slick-arrow {
     background-color: gray;
 }
 
-.description {
-    color: #2678fe;
+.left_nav .accordion {
+    background-color: #fff;
+    color: #000;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-bottom: 10px;
+}
+
+.left_nav button.accordion {
+    position: relative;
+    color: #4789fc;
+    font-size: 18px;
+    font-family: "Tahoma";
+    font-weight: 500;
+    width: auto;
+    padding-left: 0;
+    padding-right: 0;
+    margin-bottom: 0px;
+    margin-left: 55px;
+}
+.left_nav button.accordion:before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    left: 0;
+    top: 37px;
     text-decoration: underline;
-    font-size: 15px;
+    border-bottom: 2px dotted #4789fc;
+}
+
+.left_nav button.accordion:hover {
+    background-color: inherit;
+}
+.left_nav button.accordion:hover {
+    opacity: 0.6;
+}
+
+
+.left_nav .question_answer {
+    position: relative;
+}
+
+.left_nav .question_answer:before {
+    content: "\f0d8";
+    position: absolute;
+    font-family: "FontAwesome";
+    right: 10px;
+    top: 18px;
+}
+
+.left_nav .question_answer a img {
+    display: inline-block;
+    margin-left: 10px;
+    position: absolute;
+    padding-right: 17px;
+}
+
+.left_nav .question_answer span {
+    padding-left: 55px;
+    font-family: "Tahoma";
+    font-size: 17px;
+}
+
+.subcat span.menu-image-title {
+    padding-left: 30px;
+}
+
+.left_nav  .question_answer.subcat:before {
+    content:'';
+}
+.left_nav .question_answer.subcat a{
+    width:100%;
+}
+.left_nav .question_answer a {
+    display: inline-block;
+    margin: 10px 0;
+    text-decoration: none;
+    color: gray;
+}
+
+.left_nav div.question_answer.clicked:before {
+    content: "\f0d7";
+}
+
+.left_nav .panel {
+    padding-left: 0;
+    position: relative;
+    display: block;
+}
+
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
 }
 
 .made_by a {
@@ -1901,7 +2004,14 @@ button.slick-next.pull-right.slick-arrow {
     }
 
 }
-
+.clearfix {
+    overflow: auto;
+  }
+  .clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+  }
 .slick-slider {
     padding-top: 25px;
 }
@@ -2207,6 +2317,7 @@ sup {
     margin: 0;
     padding-left: 0;
     padding-bottom: 10px;
+    width: 100%;
 }
 
 .topnav .dropdown-content ul ul {
@@ -2253,6 +2364,12 @@ sup {
     top: 20px;
     text-decoration: underline;
     border-bottom: 1px solid #4789fc;
+}
+.topnav img.menu-image.menu-image-title-after {
+    padding-right: 10px;
+    display: inline;
+    vertical-align: middle;
+    margin-left: -46px;
 }
 input.search-field {
     padding: 6px;

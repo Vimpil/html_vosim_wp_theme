@@ -1,4 +1,7 @@
 <?php
+
+/* END links corrects */
+
 /* disable gutenberg */
 
 // disable for posts
@@ -11,8 +14,9 @@ add_filter('use_block_editor_for_post_type', '__return_false', 10);
 
 /* Shortcodes */
 
-function button_shortcode() {
-	return '<a href="http://twitter.com/filipstefansson" class="twitter-button">Follow me on Twitter!</a>"';
+function button_shortcode()
+{
+    return '<a href="http://twitter.com/filipstefansson" class="twitter-button">Follow me on Twitter!</a>"';
 }
 add_shortcode('button', 'button_shortcode');
 /* END Shortcodes */
@@ -27,100 +31,107 @@ $font_folder = "/assets/css/fonts/";
 
 /**/
 add_action('init', 'register_custom_menu');
-function register_custom_menu() {
-	register_nav_menu('custom_menu', __('Custom Menu'));
+function register_custom_menu()
+{
+    register_nav_menu('custom_menu', __('Custom Menu'));
 }
-
 
 // Изменяет основные параметры меню
 add_filter('wp_nav_menu_args', 'filter_wp_menu_args');
-function filter_wp_menu_args($args) {
-	if ($args['theme_location'] === 'header-menu') {
-		$args['container'] = false;
-		$args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
-		$args['menu_class'] = 'menu menu--main menu-horizontal';
-	}
-	return $args;
+function filter_wp_menu_args($args)
+{
+    if ($args['theme_location'] === 'header-menu') {
+        $args['container'] = false;
+        $args['items_wrap'] = '<ul class="%2$s">%3$s</ul>';
+        $args['menu_class'] = 'menu menu--main menu-horizontal';
+    }
+    return $args;
 }
 // Изменяем атрибут id у тега li
 add_filter('nav_menu_item_id', 'filter_menu_item_css_id', 10, 4);
-function filter_menu_item_css_id($menu_id, $item, $args, $depth) {
-	return $args->theme_location === 'header-menu' ? '' : $menu_id;
+function filter_menu_item_css_id($menu_id, $item, $args, $depth)
+{
+    return $args->theme_location === 'header-menu' ? '' : $menu_id;
 }
 // Изменяем атрибут class у тега li
 add_filter('nav_menu_css_class', 'filter_nav_menu_css_classes', 10, 4);
-function filter_nav_menu_css_classes($classes, $item, $args, $depth) {
-	if ($args->theme_location === 'header-menu') {
-		$classes = [
-			'menu-node',
-			'menu-node--main_lvl_' . ($depth + 1),
-		];
-		if ($item->current) {
-			$classes[] = 'menu-node--active';
-		}
-	}
-	return $classes;
+function filter_nav_menu_css_classes($classes, $item, $args, $depth)
+{
+    if ($args->theme_location === 'header-menu') {
+        $classes = [
+            'menu-node',
+            'menu-node--main_lvl_' . ($depth + 1),
+        ];
+        if ($item->current) {
+            $classes[] = 'menu-node--active';
+        }
+    }
+    return $classes;
 }
 // Изменяет класс у вложенного ul
 add_filter('nav_menu_submenu_css_class', 'filter_nav_menu_submenu_css_class', 10, 3);
-function filter_nav_menu_submenu_css_class($classes, $args, $depth) {
-	if ($args->theme_location === 'header-menu') {
-		$classes = [
-			'menu',
-			'menu--dropdown',
-			'menu--vertical',
-		];
-	}
-	return $classes;
+function filter_nav_menu_submenu_css_class($classes, $args, $depth)
+{
+    if ($args->theme_location === 'header-menu') {
+        $classes = [
+            'menu',
+            'menu--dropdown',
+            'menu--vertical',
+        ];
+    }
+    return $classes;
 }
 // Добавляем классы ссылкам
 add_filter('nav_menu_link_attributes', 'filter_nav_menu_link_attributes', 10, 4);
-function filter_nav_menu_link_attributes($atts, $item, $args, $depth) {
-	if ($args->theme_location === 'header-menu') {
-		$atts['class'] = 'menu-link';
-		if ($item->current) {
-			$atts['class'] .= ' menu-link--active';
-		}
-	}
-	return $atts;
+function filter_nav_menu_link_attributes($atts, $item, $args, $depth)
+{
+    if ($args->theme_location === 'header-menu') {
+        $atts['class'] = 'menu-link';
+        if ($item->current) {
+            $atts['class'] .= ' menu-link--active';
+        }
+    }
+    return $atts;
 }
 
 // DEBUG script
 
-function debug_to_console($data) {
-	$output = $data;
-	if (is_array($output)) {
-		$output = implode(',', $output);
-	}
+function debug_to_console($data)
+{
+    $output = $data;
+    if (is_array($output)) {
+        $output = implode(',', $output);
+    }
 
-	echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
+    echo "<script>console.log( 'Debug Objects: " . $output . "' );</script>";
 }
 
 // END DEBUG script
 
-
 // Insert content in HTML
 
-function array_to_html($array) {
-	foreach ($array as $value) {
-		echo $value;
-	}
+function array_to_html($array)
+{
+    foreach ($array as $value) {
+        echo $value;
+    }
 }
 
 // END insert content in HTML
 
 // Get Post by name
-function get_post_by_name($post_name) {
-	$found_post = [];
-	if ($posts = get_posts(array(
-		'name' => $post_name,
-		'post_type' => 'post',
-		'post_status' => 'publish',
-		'posts_per_page' => 1,
-	))) {
-		$found_post = $posts[0];
-	}
-	return $found_post;
+function get_post_by_name($post_name)
+{
+    $found_post = [];
+    if ($posts = get_posts(array(
+        'name' => $post_name,
+        'post_type' => 'post',
+        'post_status' => 'publish',
+        'posts_per_page' => 1,
+    ))) {
+        $found_post = $posts[0];
+    }
+    return $found_post;
 
 }; // END Get Post by name
 
@@ -133,66 +144,69 @@ function get_post_by_name($post_name) {
  *
  * @ver 2.6.3
  */
-function kama_excerpt( $args = '' ){
-	global $post;
+function kama_excerpt($args = '')
+{
+    global $post;
 
-	if( is_string($args) )
-		parse_str( $args, $args );
+    if (is_string($args)) {
+        parse_str($args, $args);
+    }
 
-	$rg = (object) array_merge( array(
-		'maxchar'   => 350,   // Макс. количество символов.
-		'text'      => '',    // Какой текст обрезать (по умолчанию post_excerpt, если нет post_content.
-							  // Если в тексте есть `<!--more-->`, то `maxchar` игнорируется и берется все до <!--more--> вместе с HTML.
-		'autop'     => true,  // Заменить переносы строк на <p> и <br> или нет?
-		'save_tags' => '',    // Теги, которые нужно оставить в тексте, например '<strong><b><a>'.
-		'more_text' => 'Читать дальше...', // Текст ссылки `Читать дальше`.
-	), $args );
+    $rg = (object) array_merge(array(
+        'maxchar' => 350, // Макс. количество символов.
+        'text' => '', // Какой текст обрезать (по умолчанию post_excerpt, если нет post_content.
+        // Если в тексте есть `<!--more-->`, то `maxchar` игнорируется и берется все до <!--more--> вместе с HTML.
+        'autop' => true, // Заменить переносы строк на <p> и <br> или нет?
+        'save_tags' => '', // Теги, которые нужно оставить в тексте, например '<strong><b><a>'.
+        'more_text' => 'Читать дальше...', // Текст ссылки `Читать дальше`.
+    ), $args);
 
-	$rg = apply_filters( 'kama_excerpt_args', $rg );
+    $rg = apply_filters('kama_excerpt_args', $rg);
 
-	if( ! $rg->text )
-		$rg->text = $post->post_excerpt ?: $post->post_content;
+    if (!$rg->text) {
+        $rg->text = $post->post_excerpt ?: $post->post_content;
+    }
 
-	$text = $rg->text;
-	$text = preg_replace( '~\[([a-z0-9_-]+)[^\]]*\](?!\().*?\[/\1\]~is', '', $text ); // убираем блочные шорткоды: [foo]some data[/foo]. Учитывает markdown
-	$text = preg_replace( '~\[/?[^\]]*\](?!\()~', '', $text ); // убираем шоткоды: [singlepic id=3]. Учитывает markdown
-	$text = trim( $text );
+    $text = $rg->text;
+    $text = preg_replace('~\[([a-z0-9_-]+)[^\]]*\](?!\().*?\[/\1\]~is', '', $text); // убираем блочные шорткоды: [foo]some data[/foo]. Учитывает markdown
+    $text = preg_replace('~\[/?[^\]]*\](?!\()~', '', $text); // убираем шоткоды: [singlepic id=3]. Учитывает markdown
+    $text = trim($text);
 
-	// <!--more-->
-	if( strpos( $text, '<!--more-->') ){
-		preg_match('/(.*)<!--more-->/s', $text, $mm );
+    // <!--more-->
+    if (strpos($text, '<!--more-->')) {
+        preg_match('/(.*)<!--more-->/s', $text, $mm);
 
-		$text = trim( $mm[1] );
+        $text = trim($mm[1]);
 
-		$text_append = ' <a href="'. get_permalink( $post ) . $post->ID .'">'. $rg->more_text .'</a>';
-	}
-	// text, excerpt, content
-	else {
-		$text = trim( strip_tags($text, $rg->save_tags) );
+        $text_append = ' <a href="' . get_permalink($post) . $post->ID . '">' . $rg->more_text . '</a>';
+    }
+    // text, excerpt, content
+    else {
+        $text = trim(strip_tags($text, $rg->save_tags));
 
-		// Обрезаем
-		if( mb_strlen($text) > $rg->maxchar ){
-			$text = mb_substr( $text, 0, $rg->maxchar );
-			$text = preg_replace( '~(.*)\s[^\s]*$~s', '\\1 ...', $text ); // убираем последнее слово, оно 99% неполное
-		}
-	}
+        // Обрезаем
+        if (mb_strlen($text) > $rg->maxchar) {
+            $text = mb_substr($text, 0, $rg->maxchar);
+            $text = preg_replace('~(.*)\s[^\s]*$~s', '\\1 ...', $text); // убираем последнее слово, оно 99% неполное
+        }
+    }
 
-	// Сохраняем переносы строк. Упрощенный аналог wpautop()
-	if( $rg->autop ){
-		$text = preg_replace(
-			array("/\r/", "/\n{2,}/", "/\n/",   '~</p><br ?/?>~'),
-			array('',     '</p><p>',  '<br />', '</p>'),
-			$text
-		);
-	}
+    // Сохраняем переносы строк. Упрощенный аналог wpautop()
+    if ($rg->autop) {
+        $text = preg_replace(
+            array("/\r/", "/\n{2,}/", "/\n/", '~</p><br ?/?>~'),
+            array('', '</p><p>', '<br />', '</p>'),
+            $text
+        );
+    }
 
-	$text = apply_filters( 'kama_excerpt', $text, $rg );
+    $text = apply_filters('kama_excerpt', $text, $rg);
 
-	if( isset($text_append) )
-		$text .= $text_append;
+    if (isset($text_append)) {
+        $text .= $text_append;
+    }
 
-	return ( $rg->autop && $text ) ? "<p>$text</p>" : $text;
-
+    return ($rg->autop && $text) ? "<p>$text</p>" : $text;
 
 }
 /* Сhangelog:
@@ -206,18 +220,19 @@ function kama_excerpt( $args = '' ){
 
 // How to Show Parent Category Products Only Without Subcategories
 
-function exclude_product_cat_children($wp_query) {
-	if ( isset ( $wp_query->query_vars['product_cat'] ) && $wp_query->is_main_query()) {
-		$wp_query->set('tax_query', array(
-				array (
-					'taxonomy' => 'product_cat',
-					'field' => 'slug',
-					'terms' => $wp_query->query_vars['product_cat'],
-					'include_children' => false
-				)
-			)
-		);
-	}
+function exclude_product_cat_children($wp_query)
+{
+    if (isset($wp_query->query_vars['product_cat']) && $wp_query->is_main_query()) {
+        $wp_query->set('tax_query', array(
+            array(
+                'taxonomy' => 'product_cat',
+                'field' => 'slug',
+                'terms' => $wp_query->query_vars['product_cat'],
+                'include_children' => false,
+            ),
+        )
+        );
+    }
 }
 add_filter('pre_get_posts', 'exclude_product_cat_children');
 
@@ -226,27 +241,26 @@ add_filter('pre_get_posts', 'exclude_product_cat_children');
 //add_action( 'sitemap_titles_replace', 'remove_wcpgsk_email_order_table' );
 //function remove_wcpgsk_email_order_table() {
 //
-//	global $wcpgsk;
-//	remove_action( 'woocommerce_email_after_order_table', array( $wcpgsk, 'wcpgsk_email_after_order_table' ) );
+//    global $wcpgsk;
+//    remove_action( 'woocommerce_email_after_order_table', array( $wcpgsk, 'wcpgsk_email_after_order_table' ) );
 //
 //}
 
-function my_breadcrumb($theme_location = 'sitemap', $separator = '<i class="fas fa-caret-right" style="color:#b7b7b7;"></i> ') {
+function my_breadcrumb($theme_location = 'sitemap', $separator = '<i class="fas fa-caret-right" style="color:#b7b7b7;"></i> ')
+{
 
+    $items = wp_get_nav_menu_items($theme_location);
+    if ($items) {
+        _wp_menu_item_classes_by_context($items); // Set up the class variables, including current-classes
+        $crumbs = array();
 
-
-	$items = wp_get_nav_menu_items($theme_location);
-	if($items) {
-		_wp_menu_item_classes_by_context( $items ); // Set up the class variables, including current-classes
-		$crumbs = array();
-
-		foreach ( $items as $item ) {
-			if ( $item->current_item_ancestor || $item->current ) {
-				$crumbs[] = "<a href=\"{$item->url}\" title=\"{$item->title}\">{$item->title}</a>";
-			}
-		}
-		echo implode( $separator, $crumbs );
-	}
+        foreach ($items as $item) {
+            if ($item->current_item_ancestor || $item->current) {
+                $crumbs[] = "<a href=\"{$item->url}\" title=\"{$item->title}\">{$item->title}</a>";
+            }
+        }
+        echo implode($separator, $crumbs);
+    }
 }
 
 /*   Separate child menu     */
@@ -259,109 +273,267 @@ function my_breadcrumb($theme_location = 'sitemap', $separator = '<i class="fas 
  * @param bool gives all children or direct children only
  * @return array returns filtered array of nav_menu_items
  */
-function get_nav_menu_item_children( $parent_id, $nav_menu_items, $depth = true ) {
-	$nav_menu_item_list = array();
-	foreach ( (array) $nav_menu_items as $nav_menu_item ) {
-		if ( $nav_menu_item->menu_item_parent == $parent_id ) {
-			$nav_menu_item_list[] = $nav_menu_item;
-			if ( $depth ) {
-				if ( $children = get_nav_menu_item_children( $nav_menu_item->ID, $nav_menu_items ) )
-					$nav_menu_item_list = array_merge( $nav_menu_item_list, $children );
-			}
-		}
-	}
-	return $nav_menu_item_list;
+function get_nav_menu_item_children($parent_id, $nav_menu_items, $depth = true)
+{
+    $nav_menu_item_list = array();
+    foreach ((array) $nav_menu_items as $nav_menu_item) {
+        if ($nav_menu_item->menu_item_parent == $parent_id) {
+            $nav_menu_item_list[] = $nav_menu_item;
+            if ($depth) {
+                if ($children = get_nav_menu_item_children($nav_menu_item->ID, $nav_menu_items)) {
+                    $nav_menu_item_list = array_merge($nav_menu_item_list, $children);
+                }
+
+            }
+        }
+    }
+    return $nav_menu_item_list;
 }
 
 /*   END Separate child menu     */
 
 /* get_nav_menu_item_children */
 
+function wp_menu_id_by_name($name)
+{
+    $menus = get_terms('nav_menu');
 
-function wp_menu_id_by_name( $name ) {
-	$menus = get_terms( 'nav_menu' );
-
-	foreach ( $menus as $menu ) {
-		if( $name === $menu->name ) {
-			return $menu->term_id;
-		}
-	}
-	return false;
+    foreach ($menus as $menu) {
+        if ($name === $menu->name) {
+            return $menu->term_id;
+        }
+    }
+    return false;
 }
 
 //echo 'My Special Menu id is ' . wp_menu_id_by_name( 'Main' );
 
-function olLiTree( $tree ) {
+function topnav_menu_gen($tree)
+{
 
+    $ulparent = 0;
+    $liparent = 0;
+    $depth = 1;
 
-	$ulparent=0;
-	$liparent=0;
-	$depth=1;
+    foreach ($tree as $key => $item) {
 
+        if ($item->post_parent == 0 || $key == 0) {
+            if ($key == 0) {
+                echo '<ul>';
+                $ulparent = $item->db_id;
+            }
+            if ($key != 0) {
+                echo "<li id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"><a href=\"$item->url\">";
+                if ($item->thumbnail_id != 0) {
+                    $image = wp_get_attachment_url($item->thumbnail_id);
+                    echo "<img width=\"36\" height=\"24\" src=\"{$image}\" class=\"menu-image menu-image-title-after\" alt=\"\">";
+                }
+                echo "<span class='menu-image-title'>$item->title</span></a> </li>";
+            }
+            $liparent = $item->object_id;
+        } elseif ($item->post_parent == $liparent) {
+            echo '<li>';
+            echo '<ul >';
+            echo "<a href=\"$item->url\" class=\"menu-image-title\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </a>";
+            $ulparent = $item->db_id;
+            $liparent = $item->db_id;
+            $depth++;
+        } else {
+            echo str_repeat("</ul></li>", $depth - 1);
+            echo '<li>';
+            echo '<ul class="submenu">';
+            echo "<a href=\"$item->url\" class=\"menu-image-title\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </a>";
+            $depth = 2;
+        }
 
-	foreach ( $tree as $key=>$item ) {
+//        elseif ($item->post_parent!=$previtem){
+        //            str_repeat('</li>',$depth);
+        //            ChromePhp::log('FLAG');
+        //            ChromePhp::log($item);
+        //            $depth=1;
+        //            olLiTree( $tree );
+        //
+        //        }
 
-//		ChromePhp::log('$item->post_parent');
-//		ChromePhp::log($item->post_parent);
-//		ChromePhp::log($item->post_parent==0);
-//		ChromePhp::log('$previtem');
-//		ChromePhp::log($previtem);
-
-		ChromePhp::log('$item->title');
-		ChromePhp::log($item->title);
-		ChromePhp::log('$item->db_id');
-		ChromePhp::log($item->db_id);
-		ChromePhp::log('$ulparent');
-		ChromePhp::log($ulparent);
-		ChromePhp::log('$liparent');
-		ChromePhp::log($liparent);
-		ChromePhp::log('$item->post_parent');
-		ChromePhp::log($item->post_parent);
-		if($item->post_parent==0||$key==0) {
-			if($key==0){
-				echo '<ul>';
-				$ulparent=$item->db_id;
-			}
-			if($key!=0) {
-				echo "<li id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"><a>";
-				if($item->thumbnail_id!=0){
-					$image = wp_get_attachment_url($item->thumbnail_id);
-					echo "<img width=\"36\" height=\"24\" src=\"{$image}\" class=\"menu-image menu-image-title-after\" alt=\"\">";
-				}
-				echo "$item->title</a> </li>";
-			}
-			$liparent=$item->object_id;
-		}elseif ($item->post_parent==$liparent) {
-			echo '<li>';
-			echo '<ul >';
-			echo "<a class=\"menu-image-title\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </a>";
-			$ulparent=$item->db_id;
-			$liparent=$item->db_id;
-			$depth++;
-		}else{
-			ChromePhp::log('$item->post_parent==$ulparent');
-			ChromePhp::log('debth!!!!!');
-			ChromePhp::log($depth);
-			echo str_repeat("</ul></li>",$depth-1);
-			echo '<li>';
-			echo '<ul class="submenu">';
-			echo "<a class=\"menu-image-title\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </a>";
-			$depth=2;
-		}
-
-//		elseif ($item->post_parent!=$previtem){
-//			str_repeat('</li>',$depth);
-//			ChromePhp::log('FLAG');
-//			ChromePhp::log($item);
-//			$depth=1;
-//			olLiTree( $tree );
-//
-//		}
-
-	}
+    }
 }
 
+function leftnav_menu_gen($tree)
+{
+
+    global $wp;
+    $ulparent = 0;
+    $liparent = 0;
+    $depth = 1;
+    $whileLoop = true;
+    $parent_search = false;
+    $parent = '';
+    $limit_count = 0;
+
+    ChromePhp::log($tree);
+    ChromePhp::log('home_url()');
+    ChromePhp::log(home_url());
+    ChromePhp::log('home_url( $wp->request )');
+    ChromePhp::log((str_replace("/home/", "/index.php/home/", home_url($wp->request))) . "/");
+
+    ChromePhp::log('$curent_url');
+    $curent_url = ((str_replace(array("localhost/"), array("localhost/index.php/"), home_url($wp->request))) . "/");
+    $home_url = home_url() . '/';
+    ChromePhp::log($curent_url);
+
+// $item->url == home_url( $wp->request ))&&$loopquery==false
+
+    while ($whileLoop) {
+
+        if ($parent_search == true) {
+            $curent_url = $parent;
+            $parent_search = false;
+        }
+
+        $keys = array_keys($tree);
+        $arraySize = count($arrayToWalk);
+        for($i=0;$i<$arraySize;$i++){
+    
+
+
+        foreach ($tree as $key => $item) {
+            echo '<p></p>';
+            echo '****************************';
+            echo '<p></p>';
+            echo '$tree[$key]->title';
+            echo '<p></p>';
+            echo $tree[$key]->title;
+            echo '<p></p>';
+            echo $item->title;
+            echo '<p></p>';
+            echo '$tree[$key]->title';
+            
+            echo '<p></p>';
+            echo '****************************';
+            echo '<p></p>';
+
+
+
+            ChromePhp::log('$home_url');
+            ChromePhp::log($home_url);
+            ChromePhp::log('$curent_url');
+            ChromePhp::log($curent_url);
+            ChromePhp::log('$item->url');
+            ChromePhp::log($item->url);
+            ChromePhp::log('$item->url == home_url( $wp->request )&&$loopquery==false');
+            ChromePhp::log($item->url == home_url($wp->request) && $loopquery == false);
+
+            if ($curent_url == $home_url || $curent_url == $parent) {
+                ChromePhp::log('this is HOME!');
+                if ($item->post_parent == 0 || $key == 0) {
+                    if ($key == 0) {
+                        $ulparent = $item->db_id;
+                    }
+                    if ($key != 0) {
+                        echo "<a href=\"$item->url\" \">";
+                        if ($item->thumbnail_id != 0) {
+                            $image = wp_get_attachment_url($item->thumbnail_id);
+                            echo "<img width=\"36\" height=\"24\" src=\"{$image}\" class=\"menu-image menu-image-title-after\" alt=\"\">";
+                        }
+                        echo "<span class='menu-image-title'>$item->title</span></a> </li>";
+                    }
+                    $liparent = $item->object_id;
+
+                } elseif ($item->post_parent == $liparent) {
+
+                    echo '<div class="question_answer">';
+
+                    echo "<button class=\"accordion\">$item->title </button>";
+
+                    $ulparent = $item->db_id;
+                    $liparent = $item->db_id;
+                    $depth++;
+
+                    echo '<div class="panel">';
+
+                } else {
+
+                    echo '</div>';
+                    echo str_repeat("</div>", $depth - 1);
+                    echo '<div class="question_answer">';
+
+                    echo "<button href=\"$item->url\" class=\"accordion\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </button>";
+
+                    echo '<div class="panel">';
+
+                    $depth = 2;
+
+                }
+            }if (($curent_url == $item->url)) {
+                ChromePhp::log('ANOTHER WAY');
+                    if($item->post_parent!=0){
+                        ChromePhp::log($item->post_parent);
+                        ChromePhp::log('if($item->post_parent!=0){');
+
+                    }else {
+                        ChromePhp::log('ELSE');
+                        $key--;
+                        echo '<p></p>';
+                        echo '****************************2222222';
+                        echo '<p></p>';
+                        echo '$tree[$key]->title';
+                        echo '<p></p>';
+                        echo $tree[$key]->title;
+                        echo '<p></p>';
+                        echo $item->title;
+                        echo '<p></p>';
+                        echo '$tree[$key]->title';
+                        echo '<p></p>';
+                        $key--;
+                        echo $tree[$key]->title;
+                        echo '<p></p>';
+                        echo '****************************2222222';
+                        echo '<p></p>';
+                        echo $item->title;
+                        $parent=$item->url;
+                        $parent_search=true;
+                    }
+                
+                }
+
+                // if ($curent_url == $item->url) {
+                //     $parent = $item->post_parent;
+                //     $parent_search = true;
+                //     foreach ($tree as $key2 => $item2) {
+                //         echo '<p>safksdafjJFDKFJSKLDFJLDKFJLSDKFdkjfskdf</p>';
+                //         echo '<p>$item2->ID</p>';
+                //         echo $item2->ID;
+                //         echo '<p>$item2->ID</p>';
+                //         echo '<p>$item->post_parent</p>';
+                //         echo $item->post_parent;
+                //         echo '<p>$item->post_parent</p>';
+
+                //         if ($item2->ID == $item->post_parent) {
+                //             $parent = $item2->url;
+                //             echo ' ';
+                //             echo '<p>safksdafjJFDKFJSKLDFJLDKFJLSDKFdkjfskdf!!!!!</p>';
+                //             echo ' ';
+                //             break;
+
+                //         }
+
+                //     }
+                // }
+
+
+            }
+            if ($parent_search == false) {
+                break;
+            }
+            $limit_count++;
+            if($limit_count=90){
+                break;
+            }
+        }
+        echo str_repeat("</div>", $depth);
+    }
+        
+        
+    
+    
 /* END get_nav_menu_item_children */
-
-
-?>

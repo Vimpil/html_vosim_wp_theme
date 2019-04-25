@@ -155,7 +155,12 @@ window.onclick = function(e) {
 }
 jQuery(document).ready(function($) {
 
-
+    /*Left_nav main*/
+    $(".left_nav button.accordion").click(function(event) {
+        $(this).parent().toggleClass('clicked');
+        console.log($(this).parent());
+    });
+    /*END Left_nav main*/
 
    /*Left_nav main*/
    $(".left_nav .menu-item-has-children>a").click(function(event) {
@@ -163,13 +168,21 @@ jQuery(document).ready(function($) {
       $(this).parent().toggleClass('clicked');
    });
 
+    $(".accordion").click(function(event) {
+        /* Act on the event */
+        $(this).parent().children('.panel').slideToggle();
+    });
+
+
+
    // $(".accordion").click(function(event) {
+   //    console.log('clicked');
+   // }
 
    $(".left_nav .menu-main-container ul>li a").click(function(event) {
       /* Act on the event */
       $(this).parent().children('ul').slideToggle();
    });
-
 
 
    /*END Left_nav main*/

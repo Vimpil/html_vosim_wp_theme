@@ -23,20 +23,16 @@ global $images_folder
 //      foreach ($itm_chldrn as $itm){
 //          echo $itm->title;
 //      };
-      ChromePhp::log('loggs');
-      ChromePhp::log(get_nav_menu_item_children( 1551, $nav_menu_items, $depth = true ));
-      ChromePhp::log('loggs loggs loggs');
-      ChromePhp::log(wp_nav_menu(array()));
-      ChromePhp::log('loggs');
 
-      olLiTree($itm_chldrn);
+
+      topnav_menu_gen($itm_chldrn);
 
       ?>
     </div>
   </div>
 
   <a href="/index.php/all_news/" class="menu-title">Новости</a>
-  <a href="#contact" class="menu-title">Контакты</a>
+  <a href="/index.php/contacts/" class="menu-title">Контакты</a>
   <a href="index.php/sitemap/" class="menu-title">Карта сайта</a>
 
 	<?php get_search_form(); ?>
