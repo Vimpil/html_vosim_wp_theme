@@ -311,7 +311,7 @@ function wp_menu_id_by_name($name)
 function topnav_menu_gen($tree)
 {
 
-    $ulparent = 0;
+    
     $liparent = 0;
     $depth = 1;
 
@@ -320,7 +320,7 @@ function topnav_menu_gen($tree)
         if ($item->post_parent == 0 || $key == 0) {
             if ($key == 0) {
                 echo '<ul>';
-                $ulparent = $item->db_id;
+            
             }
             if ($key != 0) {
                 echo "<li id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"><a href=\"$item->url\">";
@@ -335,7 +335,7 @@ function topnav_menu_gen($tree)
             echo '<li>';
             echo '<ul >';
             echo "<a href=\"$item->url\" class=\"menu-image-title\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </a>";
-            $ulparent = $item->db_id;
+            
             $liparent = $item->db_id;
             $depth++;
         } else {
@@ -360,178 +360,125 @@ function topnav_menu_gen($tree)
 
 function leftnav_menu_gen($tree)
 {
-
     global $wp;
-    $ulparent = 0;
-    $liparent = 0;
+    
+    // UL DEPTH
     $depth = 1;
-    $whileLoop = true;
+        
+    // ONE parent
     $parent_search = false;
     $parent = '';
-    $limit_count = 0;
 
-    ChromePhp::log($tree);
-    ChromePhp::log('home_url()');
-    ChromePhp::log(home_url());
-    ChromePhp::log('home_url( $wp->request )');
-    ChromePhp::log((str_replace("/home/", "/index.php/home/", home_url($wp->request))) . "/");
-
-    ChromePhp::log('$curent_url');
-    $curent_url = ((str_replace(array("localhost/"), array("localhost/index.php/"), home_url($wp->request))) . "/");
+    //URL for now and home
+    $current_url = ((str_replace(array("localhost/"), array("localhost/index.php/"), home_url($wp->request))) . "/");
+    $base_current_url = $current_url;
     $home_url = home_url() . '/';
-    ChromePhp::log($curent_url);
 
-// $item->url == home_url( $wp->request ))&&$loopquery==false
-
-    while ($whileLoop) {
-
-        if ($parent_search == true) {
-            $curent_url = $parent;
-            $parent_search = false;
-        }
+        
 
         $keys = array_keys($tree);
-        $arraySize = count($arrayToWalk);
+        $arraySize = count($tree);
+
+
         for($i=0;$i<$arraySize;$i++){
-    
-
-
-        foreach ($tree as $key => $item) {
-            echo '<p></p>';
-            echo '****************************';
-            echo '<p></p>';
-            echo '$tree[$key]->title';
-            echo '<p></p>';
-            echo $tree[$key]->title;
-            echo '<p></p>';
-            echo $item->title;
-            echo '<p></p>';
-            echo '$tree[$key]->title';
             
-            echo '<p></p>';
-            echo '****************************';
-            echo '<p></p>';
+            if ($parent_search == true) {
+                $current_url = $parent;            
+            }
 
+            // Current Item
+            $tr_cur_item=$tree[$keys[$i]];
+            
+            // PrevItem $i
+            if($i!=0){
+            $prevkey=$i-1;
+            }else {
+                $prevkey=0;
+            }
 
-
-            ChromePhp::log('$home_url');
-            ChromePhp::log($home_url);
-            ChromePhp::log('$curent_url');
-            ChromePhp::log($curent_url);
-            ChromePhp::log('$item->url');
-            ChromePhp::log($item->url);
-            ChromePhp::log('$item->url == home_url( $wp->request )&&$loopquery==false');
-            ChromePhp::log($item->url == home_url($wp->request) && $loopquery == false);
-
-            if ($curent_url == $home_url || $curent_url == $parent) {
-                ChromePhp::log('this is HOME!');
-                if ($item->post_parent == 0 || $key == 0) {
-                    if ($key == 0) {
-                        $ulparent = $item->db_id;
-                    }
-                    if ($key != 0) {
-                        echo "<a href=\"$item->url\" \">";
-                        if ($item->thumbnail_id != 0) {
-                            $image = wp_get_attachment_url($item->thumbnail_id);
+            // Check if current page Home or Ul by search
+            if ($current_url == $home_url || $current_url == $parent) {
+                
+                // If standart page or first
+                if ($tr_cur_item->post_parent == 0 || $i == 0) {
+                    
+                    // If furst Ul
+                    if ($i != 0) {
+                        echo "<a href=\"$tr_cur_item->url\" \">";
+                        
+                        // if have image image
+                        if ($tr_cur_item->thumbnail_id != 0) {
+                            $image = wp_get_attachment_url($tr_cur_item->thumbnail_id);
                             echo "<img width=\"36\" height=\"24\" src=\"{$image}\" class=\"menu-image menu-image-title-after\" alt=\"\">";
                         }
-                        echo "<span class='menu-image-title'>$item->title</span></a> </li>";
+
+                        
+                        // standart li
+                        echo "<span class='menu-image-title'>";
+                        if($tree[$keys[$i]]->url==$base_current_url){
+                            echo '<strong>';
+                        }
+                        
+                        echo $tr_cur_item->title;
+                        if($tree[$keys[$i]]->url==$base_current_url){
+                            echo '</strong>';
+                        }
+                        echo "</span></a> </li>";
                     }
-                    $liparent = $item->object_id;
 
-                } elseif ($item->post_parent == $liparent) {
-
-                    echo '<div class="question_answer">';
-
-                    echo "<button class=\"accordion\">$item->title </button>";
-
-                    $ulparent = $item->db_id;
-                    $liparent = $item->db_id;
-                    $depth++;
-
-                    echo '<div class="panel">';
-
-                } else {
+                } 
+                // if 2 UL not search
+                else {
 
                     echo '</div>';
                     echo str_repeat("</div>", $depth - 1);
+
+                    if($parent_search==true){
+                        if($tr_cur_item->url!=$parent){
+                            break;
+                        }
+                    }
                     echo '<div class="question_answer">';
-
-                    echo "<button href=\"$item->url\" class=\"accordion\" id=\"$item->ID\" parent_id=\"$item->post_parent\"  post_id=\"$item->db_id\"> $item->title </button>";
-
+                    if($parent_search==false){
+                    echo "<button class=\"accordion\">$tr_cur_item->title </button>";
+                    }
                     echo '<div class="panel">';
-
                     $depth = 2;
 
                 }
-            }if (($curent_url == $item->url)) {
-                ChromePhp::log('ANOTHER WAY');
-                    if($item->post_parent!=0){
-                        ChromePhp::log($item->post_parent);
-                        ChromePhp::log('if($item->post_parent!=0){');
-
-                    }else {
-                        ChromePhp::log('ELSE');
-                        $key--;
-                        echo '<p></p>';
-                        echo '****************************2222222';
-                        echo '<p></p>';
-                        echo '$tree[$key]->title';
-                        echo '<p></p>';
-                        echo $tree[$key]->title;
-                        echo '<p></p>';
-                        echo $item->title;
-                        echo '<p></p>';
-                        echo '$tree[$key]->title';
-                        echo '<p></p>';
-                        $key--;
-                        echo $tree[$key]->title;
-                        echo '<p></p>';
-                        echo '****************************2222222';
-                        echo '<p></p>';
-                        echo $item->title;
-                        $parent=$item->url;
-                        $parent_search=true;
-                    }
+                // url = current
+            }elseif (($current_url == $tr_cur_item->url)) {
                 
+                
+
+                // If UL    
+                if($tr_cur_item->post_parent!=0){
+                    $parent_search=true;
+                        $parent=$tr_cur_item->url;
+                        $i-1;
+                        echo '<div class="question_answer">';
+                        echo '<div class="panel">';
+                        $depth = 2;
+                        if($parent_search==true){
+                            if($tr_cur_item->url!=$parent){
+                                break;
+                            }      
+                    }
+                }else {
+                    $parent_search=true;
+                    for($j=$i;$j>=0;$j--){
+                        if (($tree[$keys[$j]]->post_parent)!=0){
+                            $parent=$tree[$keys[$j]]->url;
+                            $i=$j-1;
+                            break 1;
+                        }
+                    }
                 }
-
-                // if ($curent_url == $item->url) {
-                //     $parent = $item->post_parent;
-                //     $parent_search = true;
-                //     foreach ($tree as $key2 => $item2) {
-                //         echo '<p>safksdafjJFDKFJSKLDFJLDKFJLSDKFdkjfskdf</p>';
-                //         echo '<p>$item2->ID</p>';
-                //         echo $item2->ID;
-                //         echo '<p>$item2->ID</p>';
-                //         echo '<p>$item->post_parent</p>';
-                //         echo $item->post_parent;
-                //         echo '<p>$item->post_parent</p>';
-
-                //         if ($item2->ID == $item->post_parent) {
-                //             $parent = $item2->url;
-                //             echo ' ';
-                //             echo '<p>safksdafjJFDKFJSKLDFJLDKFJLSDKFdkjfskdf!!!!!</p>';
-                //             echo ' ';
-                //             break;
-
-                //         }
-
-                //     }
-                // }
-
-
-            }
-            if ($parent_search == false) {
-                break;
-            }
-            $limit_count++;
-            if($limit_count=90){
-                break;
             }
         }
-        echo str_repeat("</div>", $depth);
+        echo str_repeat("</div>", $depth+2);
     }
+    
         
         
     
