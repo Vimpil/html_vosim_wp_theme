@@ -11,19 +11,10 @@ Template Post Type: page,
 get_header();
 ?>
 
-<?php
-include 'template-parts/php_logger/ChromePhp.php';
-?>
 <body>
   <main>
-
-
-
     <?php
     global $images_folder;
-    ?>
-
-    <?php
     global $image_list;
     global $found_post;
     global $temp_path;

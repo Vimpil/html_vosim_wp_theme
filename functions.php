@@ -373,7 +373,15 @@ function leftnav_menu_gen($tree)
     $current_url = ((str_replace(array("localhost/"), array("localhost/index.php/"), home_url($wp->request))) . "/");
     $base_current_url = $current_url;
     $home_url = home_url() . '/';
-
+ 
+    
+    // check if parentpage is localhost
+    global $wp_query;
+    $post_id = $wp_query->post->ID;
+    $parent_ID_page=wp_get_post_parent_id($post_id);
+	if($parent_ID_page == 1547){
+        $current_url=$home_url;
+    }
         
 
         $keys = array_keys($tree);

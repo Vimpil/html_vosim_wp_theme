@@ -28,7 +28,8 @@ global $temp_path;
      $args = array();
      $nav_menu_items=wp_get_nav_menu_items( 2, $args );
      $itm_chldrn=get_nav_menu_item_children( 1550, $nav_menu_items, $depth = true );
-     leftnav_menu_gen($itm_chldrn);
+     
+     leftnav_menu_gen($itm_chldrn); 
 
 ?>
       <div class="promote">

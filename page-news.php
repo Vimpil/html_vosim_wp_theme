@@ -1,3 +1,8 @@
+<div id="page" class="main_page">
+  <div class="mh-head Sticky header" id="my-header">
+    <a href="#menu"><span></span></a>
+    Строй Союз
+  </div>
 <?php
 /*
  * Template Name: page-news
@@ -7,11 +12,7 @@
 <?php get_header();?>
 
 <body>
-	<div id="page" class="main_page">
-  <div class="mh-head Sticky header" id="my-header">
-    <a href="#menu"><span></span></a>
-    Строй Союз
-  </div>
+	
   <main>
   	
   	<?php
