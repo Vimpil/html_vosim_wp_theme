@@ -41,4 +41,4 @@ global $images_folder
 <!--        <button type="button"><i class="fa fa-search"></i></button>-->
 <!--    </div>-->
 </div>
-
+<div><a href="/index.php/home/elements/" class="menu-title">elements page</a></div>

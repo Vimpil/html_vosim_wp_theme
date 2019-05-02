@@ -543,7 +543,6 @@ section.main {
 @media screen and (max-width: 768px) {
     .promote {
         width: 80%;
-        margin: 0 auto;
     }
 
 }
@@ -735,11 +734,11 @@ ul li .img-close {
 }
 
 .mfp-arrow-left:after {
-    border-right: 17px solid black;
+    border-right: 17px solid #ff9900;;
 }
 
 .mfp-arrow-right:after {
-    border-left: 17px solid black;
+    border-left: 17px solid #ff9900;
 }
 
 .mfp-arrow-right:before {
@@ -768,18 +767,16 @@ ul li .img-close {
 
 }
 
-@media screen and (max-width: 980px) {
-    aside.left_nav {
-        float: none !important;
-        margin: 0 auto;
-        display: block !important;
-        text-align: center;
-        margin-bottom: 40px;
-        width: 100%;
-        padding-left: 0;
-        padding-top: 0;
-    }
-
+@media screen and (max-width: 980px){
+aside.left_nav {
+    float: none !important;
+    margin: 0 auto;
+    display: block;
+    text-align: left;
+    margin-bottom: 40px;
+    width: 246px;
+    padding-top: 0;
+}
 }
 
 @media screen and (max-width: 980px) {
@@ -1918,6 +1915,7 @@ button.slick-next.pull-right.slick-arrow {
     margin: 10px 0;
     text-decoration: none;
     color: gray;
+    width: 100%;
 }
 
 .left_nav div.question_answer.clicked:before {
@@ -2820,4 +2818,104 @@ ul#parsley-id-17{
 .breadcrumb a:last-child{
     color:#494949;
     pointer-events: none;
+}
+div.proj_inbox {
+    display: block;
+    margin-top: 18px;
+    margin-left: 18px;
+    margin-right: 18px;
+    position: relative;
+}
+
+.gallery-group>a {
+    display: none;
+}
+
+.gallery-group>a:first-child {
+    display: block;
+}
+.elements_gal .container {
+    padding-left: 0;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+.elem_box {
+    width: 30%;
+    display: inline-block;
+    margin-top: 5px;
+    border-radius: 4px;
+    position: relative;
+    overflow: auto;
+    text-align: center;
+    padding-bottom: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.elements_gal .flex-control-paging li a, .elements_gal .flex-control-paging li a {
+    background-color: #A3ABAF;
+    height: 40px;
+    width: 40px;
+    border-radius: 2px;
+}
+.elements_gal .flex-control-paging li a.flex-active, .elements_gal .flex-control-paging li a.flex-active {
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f9fcf7+0,f5f9f0+100;L+Green+3D */
+background: #f9fcf7; /* Old browsers */
+background: -moz-linear-gradient(top, #f9fcf7 0%, #f5f9f0 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, #f9fcf7 0%,#f5f9f0 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, #f9fcf7 0%,#f5f9f0 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#f9fcf7', endColorstr='#f5f9f0',GradientType=0 ); /* IE6-9 */
+}
+.elements_gal .flex-control-paging {
+    position: relative;
+    width: auto;
+    float: right;
+    bottom: 0;
+}
+.elements_gal .flex-control-paging li span, .elements_gal .flex-control-paging li span {
+    color: black;
+    font-family: KelsonSans;
+    font-size: 24px;
+    font-weight: 400;
+    position: absolute;
+    top: 9px;
+    margin-left: -6px;
+    pointer-events: none;
+}
+.elements_gal .flex-control-paging li:before{
+    display: none;
+}
+.elements_gal .flex-control-paging li a{
+    box-shadow: inset 0 0 3px rgba(0, 0, 0, 0.6);
+    /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#eeeeee+0,cccccc+100;Gren+3D */
+    background: #eeeeee; /* Old browsers */
+    background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to bottom, #eeeeee 0%,#cccccc 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* IE6-9 */
+}
+
+.elements_gal .flexslider .slides img {
+    margin-bottom: 10px;
+}
+
+.elements_gal .flexslider a{
+color:#4689FC;
+}
+
+.displayNone{
+    display: none!important;
+}
+/* optionally hide arrows until image is displayed */
+.mfp-s-loading .mfp-arrow { 
+    display: none;
+ }
+
+ .mfp-bg {
+    background: #FFFFFF;
+}
+.mfp-counter{
+    display:none;
+}
+.mfp-close {
+    font-size: 45px;    
 }

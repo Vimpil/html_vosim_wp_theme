@@ -24,3 +24,9 @@ global $images_folder
       ?>
 
 </div>
+
+<div class="gal_box">
+      
+     
+
+</div>

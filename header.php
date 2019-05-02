@@ -22,6 +22,7 @@ language_attributes();
 <?php
 global $temp_path;
 global $css_folder;
+global $js_folder;
 global $images_folder;
 ?>
   <meta charset="utf-8">
@@ -34,6 +35,11 @@ global $images_folder;
 echo $css_folder;
 
 ?>normalize.css" media="screen" />
+    <link rel="stylesheet" href="<?php
+echo $css_folder;
+
+?>flexslider.css" media="screen" />   
+
 	<link rel="stylesheet" href="<?php
 echo $css_folder;
 

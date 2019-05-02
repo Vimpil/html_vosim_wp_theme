@@ -11,5 +11,6 @@
 			<input type="search" class="search-field" id="main_search" placeholder="<?php echo esc_attr_x( 'Поиск', 'placeholder' ) ?>" value="<?php echo get_search_query() ?>" name="s" title="<?php echo esc_attr_x( 'Search for:', 'label' ) ?>"/>
 		</label>
         <i class="fa fa-search"></i>
-		<input id='main_search_btn' type="submit" class="search-submit pointer-events-none" value="<?php echo esc_attr_x( '', 'submit button' ) ?>" />
+		<!-- pointer-events-none class if needed -->
+		<input id='main_search_btn' type="submit" class="search-submit" value="<?php echo esc_attr_x( '', 'submit button' ) ?>" />
 	</form>

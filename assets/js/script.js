@@ -1,3 +1,7 @@
+/* Global variables */
+
+
+
 $(function() {
 
    /* START Dropdown */
@@ -193,6 +197,8 @@ jQuery(document).ready(function($) {
       type: 'inline',
       preloader: false,
       focus: '#wpforms-1449',
+      alignTop: false,
+      fixedContentPos: true,
 
       // When elemened is focused, some mobile browsers in some cases zoom in
       // It looks not nice, so we disable it:
@@ -236,22 +242,48 @@ jQuery(document).ready(function($) {
 
 
 
-   $('.gallery-item').magnificPopup({
+   // $('.gallery-item').magnificPopup({
 
-      type: 'image',
-      gallery: {
-         enabled: true
-      },
+   //    type: 'image',
+   //    gallery: {
+   //       enabled: true
+   //    },
 
-      callbacks: {
+   //    callbacks: {
 
-         buildControls: function() {
-            // re-appends controls inside the main container
-            this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
-         }
-      }
+   //       buildControls: function() {
+   //          // re-appends controls inside the main container
+   //          this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
+   //       }
+   //    }
 
-   });
+   // });
+
+   $('.gallery-link').on('click', function () {
+      window.gal_link_gal_count=$(this).attr('value');      
+      $(this).next().magnificPopup('open');
+  });
+  
+  $('.gallery').each(function () {
+      $(this).magnificPopup({
+          delegate: 'a',
+          type: 'image',
+          gallery: {
+              enabled: true,
+              navigateByImgClick: true,
+          },
+          fixedContentPos: true,
+          callbacks: {
+    
+            buildControls: function() {
+               if(parseInt(window.gal_link_gal_count)>1){
+                  this.contentContainer.append(this.arrowLeft.add(this.arrowRight));
+               }
+            }
+            
+          },
+      });
+  });
 
    // Validator
    var validator_sucess = false;
@@ -334,11 +366,91 @@ jQuery(document).ready(function($) {
     * Search Activation
     * */
 
-    $(".topnav input.search-field").on('keyup', function (e) {
-        if (e.keyCode == 13) {
+    $(".topnav input.search-field").on('keyup input', function (e) {        
+      if (e.keyCode == 13) {
             $('.topnav input.search-submit').trigger('click');
-        }
+        }else{
+           $("input#main_search_btn").removeClass('pointer-events-none');
+      }
     });
+
+    $("#menu input#main_search").on('keyup input', function (e) {        
+      if (e.keyCode == 13) {
+            $('.topnav input.search-submit').trigger('click');
+        }else{
+           $("input#main_search_btn").removeClass('pointer-events-none');
+      }
+    });
+
+
+    //**--------------FLEXSLIDER-------------------------------
+	$('.flexslider').flexslider({
+		animation: "fade", // slide or fade
+      controlsContainer: ".flex-container", // the container that holds the flexslider
+      directionNav:false,
+      smoothHeight:true,
+      pauseOnHover:true,
+      start: function(){
+         console.log('flex started');
+      }, 
+      before: function(){
+         var listItems = $(".elements_gal .flexslider ul li");
+         listItems.each(function(idx, li) {
+            var flex_li = $(li);
+            if(flex_li.hasClass('displayNone')){
+               console.log('it has class');
+               flex_li.removeClass('displayNone');
+            }else{
+               console.log('it hasnt class');               
+            }
+            // and the rest of your code
+         });
+      },
+      after: function(){
+         var listItems = $(".elements_gal .flexslider ul li");
+         listItems.each(function(idx, li) {
+            var flex_li = $(li);
+            if(flex_li.hasClass('flex-active-slide')){
+               console.log('it has class');
+            }else{
+               console.log('it hasnt class');
+               flex_li.addClass('displayNone');
+            }
+            // and the rest of your code
+         });
+      }, 
+      removed:function(){
+         console.log('removed');
+      }
+   });
+   
+
+   
+
+	$("div.catal_arr_right").click(function() {
+		$(".project-boxes" + " a.flex-next").click();
+		$(".gal_boxes " + " a.flex-next").click();
+	});
+
+	$("div.catal_arr_left").click(function() {
+		$(".gal_boxes " + " a.flex-prev").click();
+		$(".project-boxes " + " a.flex-prev").click();
+	});
+
+   //**--------------END FLEXSLIDER---------------------------
+   
+   // GALLARY FLEXSLIDER
+	var li_flexl_count
+	$.each($(".elements_gal .flex-control-nav li"), function() {
+		$(this).append('<span>' + ($(this).index() + 1) + '</span>');
+	});
+	li_flexl_count = 0;
+	$.each($(".elements_gal .flex-control-nav li"), function() {
+   $(this).append('<span>' + ($(this).index() + 1) + '</span>');
+	});
+
+   // END GALLARY FLEXSLIDER
+   
 
 });
 
