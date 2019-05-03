@@ -758,6 +758,8 @@ ul li .img-close {
 
 .mfp-image-holder .mfp-close, .mfp-iframe-holder .mfp-close {
     color: black;
+    top: 12px;
+    padding-right: 20px;
 }
 
 @media screen and (max-width: 980px) {
@@ -2918,4 +2920,7 @@ color:#4689FC;
 }
 .mfp-close {
     font-size: 45px;    
+}
+li.flex-active-slide{
+    cursor: auto;
 }

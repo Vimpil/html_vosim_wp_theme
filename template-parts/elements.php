@@ -62,19 +62,64 @@ global $images_folder
 
 
 <?php
+
+
+$args = array(
+	'posts_per_page' => 10,
+	'tax_query' => array(
+		'relation' => 'AND',
+		array(
+			'post_type' => 'product',
+			'taxonomy' => 'product_cat',
+
+			'terms' => 27,
+			'include_children' => false,
+		),
+	),
+	'orderby' => 'menu_order',
+	'order' => 'ASC',
+
+);
+$gal = [];
+$loop = new WP_Query($args);
+
+    while ($loop->have_posts()) : $loop->the_post();
+
+    global $product;
+
+	$prod_id=$product->get_id();
+	
+	if(get_post_galleries_images($prod_id)){
+		
+		array_push($gal,get_post_galleries_images($prod_id));
+	}
+	
+	endwhile;
+// 	wp_reset_query();
+// $gal=get_post_galleries_images(1456);
+ChromePhp::log('get_post_galleries_images');
+	ChromePhp::log(get_post_galleries_images(1456));
+	ChromePhp::log($gal);
+	ChromePhp::log('get_post_galleries_images');
 // Get post image gallery
-$gal = get_post_galleries_images(1456);
-$keys = array_keys($gal);
-$arraySize = count($gal);
+
+$keys3 = array_keys($gal);
+$arraySize3 = count($gal);
 $elem_per_page = 9;
 $photo_count=0;
 
+for ($k = 0; $k < $arraySize3; $k++) {
+
+$keys = array_keys($gal[$k]);
+$arraySize = count($gal[$k]);
+
+
 // Loop through all galleries found
 for ($i = 0; $i < $arraySize; $i++) {
-    $keys2 = array_keys($gal[$i]);
-    $arraySize2 = count($gal[$i]);
+    $keys2 = array_keys($gal[$k][$i]);
+    $arraySize2 = count($gal[$k][$i]);
 	
-	if ($i == 0) {
+	if ($i == 0&&$k==0) {
 	echo '<div class="elements_gal">';
 	 echo '<div class="container">';
 	  echo '<div class="gal_boxes">';
@@ -94,7 +139,7 @@ ChromePhp::log('echo <div class="elem_box no_discount_proj>');
 			echo '<div class="gallery-group">';
 				echo '<div class="gallery-link" value="'.($arraySize2-1).'">';
 					echo '<a class="gallery-item" href="#">';
-						echo '<img src="'.$gal[$i][$j].'" alt="">';
+						echo '<img src="'.$gal[$k][$i][$j].'" alt="">';
 						echo '<span>Самосвал на базе авто ГАЗ</span>';
 					echo '</a>';
 				echo '</div>';
@@ -104,7 +149,7 @@ ChromePhp::log('echo <div class="elem_box no_discount_proj>');
         if ($j==0){
 			
 		}else {
-		echo  '<a href="'.$gal[$i][$j].'"></a>';
+		echo  '<a href="'.$gal[$k][$i][$j].'"></a>';
 		$photo_count++;
 		}
 		
@@ -116,10 +161,9 @@ ChromePhp::log('echo <div class="elem_box no_discount_proj>');
 			echo '</div>';
 			echo '</div>';
         }
-	}
-		
+	}		
 
-	if ($i == $arraySize - 1) {
+	if ($i == $arraySize - 1&&$k==$arraySize3-1) {
 						echo '</li>';
     					echo '</ul>';
 					echo '</div>';
@@ -133,6 +177,7 @@ ChromePhp::log('echo <div class="elem_box no_discount_proj>');
 			echo '</div>';
 		echo '</div>';
 	}
+}
 }
 ?>
 

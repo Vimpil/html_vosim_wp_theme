@@ -271,8 +271,9 @@ jQuery(document).ready(function($) {
           gallery: {
               enabled: true,
               navigateByImgClick: true,
+              fixedContentPos: false,
           },
-          fixedContentPos: true,
+         
           callbacks: {
     
             buildControls: function() {
