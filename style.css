@@ -821,9 +821,14 @@ table {
     width: 100%;
 }
 
+tbody tr:first-child{
+    margin-bottom: 20px;
+}
+
 tbody tr td:nth-child(2) {
-    text-align: center;
+    text-align: right;
     width: 30%;
+    padding-right: 7%;
 }
 
 table th {
@@ -1295,8 +1300,12 @@ button#live_an_order {
 
 .review {
     position: relative;
-    display: block;
-    margin-bottom: 40px;
+    display: inline-block;
+    margin-bottom: 5px;
+}
+
+.review .title{
+    margin-bottom: 0px;
 }
 
 .review .text:before {
@@ -2930,4 +2939,39 @@ tr {
     width: 100%;
     margin-bottom: 10px;
     display: inline-table;
+}
+.accordion {
+    background-color: #eee;
+    color: #000;
+    cursor: pointer;
+    padding: 18px;
+    width: 100%;
+    text-align: left;
+    border: none;
+    outline: none;
+    transition: 0.4s;
+    margin-bottom: 10px;
+}
+.dashed {
+    background-image: linear-gradient(to right, #666666 75%, transparent 75%);
+    background-position: 0 1.1em;
+    background-repeat: repeat-x;
+    background-size: 9px 1px;
+}
+
+.panel .title {
+    font-size: 18px;
+    margin-bottom: 5px;
+}
+.panel {
+    padding: 0 18px;
+    background-color: white;
+    display: none;
+    overflow: hidden;
+}
+.question_answer .active, .accordion:hover {
+    background-color: #faa607;
+}
+.mm-panels {
+    margin-top: 50px;
 }
