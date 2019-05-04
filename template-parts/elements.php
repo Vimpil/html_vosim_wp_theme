@@ -102,13 +102,14 @@ $args = array(
 );
 $gal = [];
 $loop = new WP_Query($args);
+$product_titles = [];
 
 while ($loop->have_posts()): $loop->the_post();
 
     global $product;
 
     $prod_id = $product->get_id();
-
+	array_push($product_titles, $product->get_title());
     if (get_post_galleries_images($prod_id)) {
 
         array_push($gal, get_post_galleries_images($prod_id));
@@ -125,8 +126,6 @@ ChromePhp::log('get_post_galleries_images');
 
 $keys3 = array_keys($gal);
 $arraySize3 = count($gal);
-$elem_per_page = 9;
-$photo_count = 0;
 
 for ($k = 0; $k < $arraySize3; $k++) {
 
@@ -144,9 +143,12 @@ for ($k = 0; $k < $arraySize3; $k++) {
             echo '<div class="gal_boxes">';
             echo '<div class="flexslider">';
             echo '<ul class="slides">';
-            echo '<li>';
-        } elseif (($i + 1) % 10 == 0) {
-            echo '<li>';
+			echo '<li>';
+			
+			
+		} 
+		elseif ((($k) % 3) == 0) {			
+			echo '<li>';
         }
 
         echo '<div class="elem_box no_discount_proj">';
@@ -159,7 +161,7 @@ for ($k = 0; $k < $arraySize3; $k++) {
                 echo '<div class="gallery-link" value="' . ($arraySize2 - 1) . '">';
                 echo '<a class="gallery-item" href="#">';
                 echo '<img src="' . $gal[$k][$i][$j] . '" alt="">';
-                echo '<span>Самосвал на базе авто ГАЗ</span>';
+                echo '<span class="menu-image-title">'.$product_titles[$k].'</span>';
                 echo '</a>';
                 echo '</div>';
                 echo '<div class="gallery">';
@@ -169,19 +171,18 @@ for ($k = 0; $k < $arraySize3; $k++) {
 
             } else {
                 echo '<a href="' . $gal[$k][$i][$j] . '"></a>';
-                $photo_count++;
             }
 
             if ($j == $arraySize2 - 1) {
 
                 ?>
                 <?php
-echo '</div>';
+				echo '</div>';
                 echo '</div>';
-                echo '</div>';
+				echo '</div>';
+			 
             }
         }
-
         if ($i == $arraySize - 1 && $k == $arraySize3 - 1) {
             echo '</li>';
             echo '</ul>';
@@ -331,7 +332,7 @@ while (have_posts()):
                         <p><?php echo $content = wpautop($post->post_content); ?></p>
                     </div>
                 </div>
-			<?php endwhile;?>
+                <?php endwhile;?>
             </section>
         </main>
     </body>
