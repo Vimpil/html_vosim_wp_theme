@@ -1915,13 +1915,13 @@ button.slick-next.pull-right.slick-arrow {
 .subcat span.menu-image-title {
     padding-left: 30px;
 }
-span.menu-image-title {
+/* span.menu-image-title {
     display: block;
     color: #2678fe;
     text-decoration: underline;
     font-size: 15px;
     text-align:left;
-}
+} */
 .main_page li.flex-active-slide {
     margin-left: 9px;
 }

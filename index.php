@@ -1,4 +1,3 @@
-<?php phpinfo(); ?>
 <div id="page" class="main_page">
     <div class="mh-head Sticky header" id="my-header">
         <a href="#menu"><span></span></a>
